@@ -3,16 +3,18 @@ import React from "react";
 import "./App.css";
 import PostList from "./components/List";
 import MainFrame from "./components/Frame/MainFrame";
+import Nav from "./components/Nav";
 
 function App() {
   return (
     <div
       className="App"
       style={{
-        backgroundColor: "#09324E",
+        backgroundColor: "#F3F3F3",
         width: "100vw",
       }}
     >
+      <Nav />
       <MainFrame>
         <PostList />
       </MainFrame>

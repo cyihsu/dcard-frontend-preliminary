@@ -8,10 +8,15 @@ const ListFrame = styled.div`
   min-height: calc(100% - 80px);
   margin: 0px 12px;
   border-radius: 4px 4px 0px 0px;
-  background: rgb(255, 255, 255);
-  width: 728px;
+  width: 800px;
 `;
 
 export default function () {
-  return <ListFrame>{latest.map()}</ListFrame>;
+  return (
+    <ListFrame>
+      {latest.map((element: any) => (
+        <ListElements content={element} />
+      ))}
+    </ListFrame>
+  );
 }
