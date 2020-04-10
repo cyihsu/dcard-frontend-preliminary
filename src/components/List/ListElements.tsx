@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { PostList } from "../../types/PostList";
 import { dateStringToChinese } from "../../utils/dateString";
 
@@ -27,8 +27,37 @@ const ListElementStyle = styled.article`
   transition: 300ms all;
 `;
 
+const ListForumName = styled.div`
+  border-radius: 12px;
+  padding: 0.2rem 0.4rem;
+  background-color: #006aa6;
+  color: white;
+`;
+
+const ListEntity = styled.div`
+  border-radius: 12px;
+`;
+
 const ListHeader = styled.div`
+  display: flex;
+  align-items: center;
   grid-area: header / header / header / header;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  *:not(:first-child)::before {
+    content: "・";
+    margin-left: 0.1rem;
+  }
+`;
+
+const ListFooter = styled.div`
+  color: rgba(0, 0, 0, 0.35);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  grid-area: footer / footer / footer / footer;
+  overflow: hidden;
 `;
 
 const ListMain = styled.div`
@@ -57,7 +86,9 @@ const ListElement: React.FC<{
   return (
     <ListElementStyle>
       <ListHeader>
-        <p>{dateStringToChinese(content.createdAt)}</p>
+        <ListForumName>{content.forumName}</ListForumName>
+        <ListEntity>{content.school ? content.school : "匿名"}</ListEntity>
+        <ListEntity>{dateStringToChinese(content.createdAt)}</ListEntity>
       </ListHeader>
       <ListMain>
         <ListTitle>{content.title}</ListTitle>
@@ -65,6 +96,9 @@ const ListElement: React.FC<{
           <span>{content.excerpt}</span>
         </ListExcerpt>
       </ListMain>
+      <ListFooter>
+        <ListEntity>{content.likeCount}</ListEntity>
+      </ListFooter>
     </ListElementStyle>
   );
 };

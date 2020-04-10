@@ -9,7 +9,7 @@ function Nav() {
     <nav
       style={{
         zIndex: 0,
-        backgroundColor: scrollPos > 0 ? "transparent" : "#006AA6",
+        backgroundColor: scrollPos > 1 ? "transparent" : "#006AA6",
         height: "64px",
         top: "0",
         width: "100%",
@@ -33,9 +33,11 @@ function Nav() {
           <img
             src={DcardLogo}
             style={{
+              fill: "cover",
               height: "100%",
+              width: "auto",
               filter:
-                scrollPos > 0
+                scrollPos > 1
                   ? "invert(21%) sepia(68%) saturate(3161%) hue-rotate(185deg) brightness(98%) contrast(102%)"
                   : "invert(100%) sepia(100%) saturate(1%) hue-rotate(352deg) brightness(102%) contrast(102%)",
             }}
