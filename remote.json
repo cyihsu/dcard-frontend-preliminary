@@ -1,0 +1,5 @@
+{
+  "POPULAR_LIST": "https://www.dcard.tw/_apicors/posts?popular=true",
+  "INFINITE_SCROLL": "https://www.dcard.tw/_apicors/posts?popular=true&before=",
+  "POST_ENDPOINT": "https://www.dcard.tw/_apicors/posts/"
+}
