@@ -9,6 +9,7 @@ import ListElements from "./ListElements";
 import REMOTE_CONSTS from "../../remote.json";
 import { PostList } from "../../types/PostList";
 import { jsonFetcher } from "../../utils/fetch";
+import { UIContext } from "../../contexts/UIContext";
 
 const ListFrame = styled.div`
   position: fixed;
@@ -21,10 +22,8 @@ const ListFrame = styled.div`
 `;
 
 export default function () {
-  const { data, error } = useSWR<PostList[]>(
-    REMOTE_CONSTS.POPULAR_LIST,
-    jsonFetcher
-  );
+  const { data } = useSWR<PostList[]>(REMOTE_CONSTS.POPULAR_LIST, jsonFetcher);
+  const { state, dispatch } = React.useContext(UIContext);
 
   const virtualRow = ({ index, style }: any) => (
     <div
@@ -46,9 +45,14 @@ export default function () {
             itemSize={160}
             height={height}
             width={width}
-            /*onScroll={({scrollOffset}) => {
-              scrollOffset > 0
-            }}*/
+            onScroll={({ scrollOffset }) => {
+              // Reduce Reducer Calls
+              if (state.listScrolled !== scrollOffset > 0) {
+                dispatch({
+                  type: scrollOffset > 0 ? "USER_NOT_AT_TOP" : "USER_AT_TOP",
+                });
+              }
+            }}
           >
             {virtualRow}
           </List>

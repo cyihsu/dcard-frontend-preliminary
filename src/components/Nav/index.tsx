@@ -1,16 +1,16 @@
 import React from "react";
 import DcardLogo from "../../logo.svg";
-import useScrollPosition from "../../hooks/useScrollPosition";
+import { UIContext } from "../../contexts/UIContext";
 
 function Nav() {
-  const [scrollPos] = useScrollPosition();
-
+  const { state } = React.useContext(UIContext);
   return (
     <nav
       style={{
         zIndex: 0,
-        backgroundColor:
-          scrollPos > 1 ? "transparent" : "var(--dcard-corp-color)",
+        backgroundColor: state.listScrolled
+          ? "transparent"
+          : "var(--dcard-corp-color)",
         height: "64px",
         top: "0",
         width: "100%",
@@ -22,7 +22,7 @@ function Nav() {
     >
       <div
         style={{
-          width: "1100px",
+          width: "var(--global-outer-width)",
         }}
       >
         <img
@@ -31,10 +31,9 @@ function Nav() {
           style={{
             height: "100%",
             padding: "1.1rem",
-            filter:
-              scrollPos > 1
-                ? "invert(21%) sepia(68%) saturate(3161%) hue-rotate(185deg) brightness(98%) contrast(102%)"
-                : "invert(100%) sepia(100%) saturate(1%) hue-rotate(352deg) brightness(102%) contrast(102%)",
+            filter: state.listScrolled
+              ? "var(--svg-white)"
+              : "var(--svg-colored)",
           }}
         />
       </div>
