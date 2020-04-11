@@ -14,13 +14,14 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-virtualized-auto-sizer": "^1.0.0",
     "@types/react-window": "^1.8.1",
+    "@types/react-window-infinite-loader": "^1.0.2",
     "react": "^16.13.1",
+    "react-content-loader": "^5.0.4",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-virtualized-auto-sizer": "^1.0.2",
     "react-window": "^1.8.5",
     "react-window-infinite-loader": "^1.0.5",
-    "swr": "^0.2.0",
     "typescript": "~3.7.2"
   },
   "scripts": {

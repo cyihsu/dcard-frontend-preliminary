@@ -1,14 +1,17 @@
 import React from "react";
+
 import DcardLogo from "../../logo.svg";
 import { UIContext } from "../../contexts/UIContext";
 
 function Nav() {
   const { state } = React.useContext(UIContext);
+  const validToTransform: boolean =
+    window.matchMedia("(min-width: 1000px)").matches && state.listScrolled;
   return (
     <nav
       style={{
-        zIndex: 0,
-        backgroundColor: state.listScrolled
+        zIndex: 10,
+        backgroundColor: validToTransform
           ? "transparent"
           : "var(--dcard-corp-color)",
         height: "64px",
@@ -31,7 +34,7 @@ function Nav() {
           style={{
             height: "100%",
             padding: "1.1rem",
-            filter: state.listScrolled
+            filter: validToTransform
               ? "var(--svg-white)"
               : "var(--svg-colored)",
           }}

@@ -3,10 +3,14 @@ import styled from "@emotion/styled";
 
 // Extracted from original chunks
 import "./App.css";
-import PostList from "./components/List";
+import List from "./components/List";
 import MainFrame from "./components/Frame/MainFrame";
 import Nav from "./components/Nav";
+
 import { UIContextProvider } from "./contexts/UIContext";
+import { PostList } from "./types/PostList";
+import { jsonFetcher } from "./utils/fetch";
+import REMOTE_CONSTS from "./remote.json";
 
 const GlobalWrapper = styled.div`
   background-color: var(--global-background-color);
@@ -15,12 +19,38 @@ const GlobalWrapper = styled.div`
 `;
 
 function App() {
+  const [data, setData] = React.useState<PostList[]>([]);
+  const [cursor, setCursor] = React.useState<number>();
+  const [triggerCursor, setTriggerFlag] = React.useState<boolean>(false);
+
+  function appendResult() {
+    setTriggerFlag(true);
+  }
+
+  React.useEffect(() => {
+    if (triggerCursor || !data?.length) {
+      const URL = data?.length
+        ? REMOTE_CONSTS.INFINITE_SCROLL + cursor
+        : REMOTE_CONSTS.POPULAR_LIST;
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      jsonFetcher(URL).then((result) => {
+        setData([...data, ...result]);
+        setCursor(result[result.length - 1].id);
+      });
+      setTriggerFlag(false);
+    }
+  }, [triggerCursor]);
+
   return (
     <GlobalWrapper>
       <UIContextProvider>
         <Nav />
         <MainFrame>
-          <PostList />
+          <List
+            data={data}
+            isLoadingMore={triggerCursor}
+            loadMore={appendResult}
+          />
         </MainFrame>
       </UIContextProvider>
     </GlobalWrapper>

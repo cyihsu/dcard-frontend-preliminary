@@ -2,13 +2,9 @@ import React from "react";
 import styled from "@emotion/styled";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
-
-import useSWR from "swr";
+import InfiniteLoader from "react-window-infinite-loader";
 
 import ListElements from "./ListElements";
-import REMOTE_CONSTS from "../../remote.json";
-import { PostList } from "../../types/PostList";
-import { jsonFetcher } from "../../utils/fetch";
 import { UIContext } from "../../contexts/UIContext";
 
 const ListFrame = styled.div`
@@ -21,9 +17,12 @@ const ListFrame = styled.div`
   }
 `;
 
-export default function () {
-  const { data } = useSWR<PostList[]>(REMOTE_CONSTS.POPULAR_LIST, jsonFetcher);
+export default function ({ data, isLoadingMore, loadMore }: any) {
   const { state, dispatch } = React.useContext(UIContext);
+
+  const itemCount = data ? data.length + 1 : 0;
+  const loadMoreItems = isLoadingMore ? () => {} : loadMore;
+  const isItemLoaded = (index: number) => index < data.length;
 
   const virtualRow = ({ index, style }: any) => (
     <div
@@ -40,23 +39,33 @@ export default function () {
     <ListFrame>
       <AutoSizer>
         {({ height, width }) => (
-          <List
-            itemCount={data?.length || 0}
-            itemSize={160}
-            height={height}
-            width={width}
-            onScroll={({ scrollOffset }) => {
-              // Reduce Reducer Calls
-              // prettier-ignore
-              if (state.listScrolled !== (scrollOffset > 0)) {
-                dispatch({
-                  type: scrollOffset > 0 ? "USER_NOT_AT_TOP" : "USER_AT_TOP",
-                });
-              }
-            }}
+          <InfiniteLoader
+            isItemLoaded={isItemLoaded}
+            itemCount={itemCount}
+            loadMoreItems={loadMoreItems}
           >
-            {virtualRow}
-          </List>
+            {({ onItemsRendered, ref }) => (
+              <List
+                itemCount={itemCount}
+                itemSize={180}
+                height={height}
+                width={width}
+                ref={ref}
+                onItemsRendered={onItemsRendered}
+                onScroll={({ scrollOffset }) => {
+                  // Reduce Reducer Calls
+                  // prettier-ignore
+                  if (state.listScrolled !== (scrollOffset > 0)) {
+                    dispatch({
+                      type: scrollOffset > 0 ? "USER_NOT_AT_TOP" : "USER_AT_TOP",
+                    });
+                  }
+                }}
+              >
+                {virtualRow}
+              </List>
+            )}
+          </InfiniteLoader>
         )}
       </AutoSizer>
     </ListFrame>

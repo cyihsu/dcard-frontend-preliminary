@@ -48,19 +48,23 @@ export const ListHeader = styled.div`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  *:not(:first-child)::before {
+  *:not(:first-of-type)::before {
     content: "・";
     margin-left: 0.1rem;
   }
 `;
 
 export const ListFooter = styled.div`
-  color: rgba(0, 0, 0, 0.35);
+  color: rgba(0, 0, 0, 0.7);
   display: flex;
   -webkit-box-align: center;
   align-items: center;
   grid-area: footer / footer / footer / footer;
   overflow: hidden;
+  *:not(:first-of-type)::before {
+    content: "";
+    margin-left: 1rem;
+  }
 `;
 
 export const ListMain = styled.div`
@@ -73,6 +77,18 @@ export const ListTitle = styled.h2`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+`;
+
+export const ListThumb = styled.img`
+  object-fit: cover;
+  margin-left: 20px;
+  grid-area: thumb / thumb / thumb / thumb;
+  overflow: hidden;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-image: initial;
 `;
 
 export const ListExcerpt = styled.div`
