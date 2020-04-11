@@ -47,7 +47,8 @@ export default function () {
             width={width}
             onScroll={({ scrollOffset }) => {
               // Reduce Reducer Calls
-              if (state.listScrolled !== scrollOffset > 0) {
+              // prettier-ignore
+              if (state.listScrolled !== (scrollOffset > 0)) {
                 dispatch({
                   type: scrollOffset > 0 ? "USER_NOT_AT_TOP" : "USER_AT_TOP",
                 });
