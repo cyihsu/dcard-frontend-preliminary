@@ -1,3 +1,11 @@
+:root {
+  --global-background-color: #f3f3f3;
+  --dcard-corp-color: #006aa6;
+  --dcard-link-color: #3397cf;
+  --pure-background: #fff;
+  --hover-background: #fafafa;
+}
+
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -41,6 +49,10 @@ html {
   height: 100%;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-family: Roboto, Helvetica Neue, Helvetica, Arial, PingFang TC, 黑體-繁,
     Heiti TC, 蘋果儷中黑, Apple LiGothic Medium, 微軟正黑體, Microsoft JhengHei,
@@ -78,6 +90,6 @@ ul {
 }
 
 a {
-  color: #3397cf;
+  color: var(--dcard-link-color);
   text-decoration: none;
 }

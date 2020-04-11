@@ -1,18 +1,23 @@
 import React from "react";
 import styled from "@emotion/styled";
-import ListElements from "./ListElements";
+import { FixedSizeList as List } from "react-window";
+import AutoSizer from "react-virtualized-auto-sizer";
+
 import useSWR from "swr";
+
+import ListElements from "./ListElements";
 import REMOTE_CONSTS from "../../remote.json";
 import { PostList } from "../../types/PostList";
 import { jsonFetcher } from "../../utils/fetch";
 
 const ListFrame = styled.div`
-  padding-top: 20px;
-  padding-bottom: 20px;
-  min-height: calc(100% - 80px);
-  margin: 0px 12px;
-  border-radius: 4px 4px 0px 0px;
+  position: fixed;
+  top: 0;
+  height: 100vh;
   width: 800px;
+  @media (max-width: 800px) {
+    width: 98vw;
+  }
 `;
 
 export default function () {
@@ -20,10 +25,35 @@ export default function () {
     REMOTE_CONSTS.POPULAR_LIST,
     jsonFetcher
   );
-  if (data) console.log(data);
+
+  const virtualRow = ({ index, style }: any) => (
+    <div
+      style={{
+        ...style,
+        top: `${parseFloat(style.top) + 90}px`,
+      }}
+    >
+      <ListElements content={data && data[index]} />
+    </div>
+  );
+
   return (
     <ListFrame>
-      {data && data.map((element: any) => <ListElements content={element} />)}
+      <AutoSizer>
+        {({ height, width }) => (
+          <List
+            itemCount={data?.length || 0}
+            itemSize={160}
+            height={height}
+            width={width}
+            /*onScroll={({scrollOffset}) => {
+              scrollOffset > 0
+            }}*/
+          >
+            {virtualRow}
+          </List>
+        )}
+      </AutoSizer>
     </ListFrame>
   );
 }
