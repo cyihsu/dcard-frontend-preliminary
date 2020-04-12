@@ -50,6 +50,10 @@ img {
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body,
 html {
   height: 100%;

@@ -14,15 +14,25 @@ import {
   ListThumb,
 } from "./ListElementStyles";
 import ListLoader from "./ListLoader";
+import { useRemotePost } from "../../hooks/useRemotePost";
 
 const ListElement: React.FC<{
   content?: PostList;
 }> = ({ content }) => {
+  const [currentPostId, setCurrentPost] = React.useState<string>("");
+  const [post] = useRemotePost(currentPostId);
+
+  React.useEffect(() => {
+    if (currentPostId !== "" && post.length !== 0) {
+      console.log(post);
+    }
+  }, [post, currentPostId]);
+
   return content ? (
     <ListElementWrapperStyle>
       <ListElementInnerStyle
         onClick={() => {
-          console.log(content.id);
+          setCurrentPost(content.id.toString());
         }}
       >
         <ListHeader>

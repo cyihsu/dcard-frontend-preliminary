@@ -7,7 +7,7 @@ import InfiniteLoader from "react-window-infinite-loader";
 import ListElements from "./ListElements";
 import { UIContext } from "../../contexts/UIContext";
 
-const ListFrame = styled.div`
+const ListFrameWrapper = styled.div`
   position: fixed;
   top: 0;
   height: 100vh;
@@ -17,12 +17,12 @@ const ListFrame = styled.div`
   }
 `;
 
-export default function ({ data, isLoadingMore, loadMore }: any) {
+function ListFrame({ data, hasNextPage, isLoadingMore, loadMore }: any) {
   const { state, dispatch } = React.useContext(UIContext);
 
-  const itemCount = data ? data.length + 1 : 0;
+  const itemCount = hasNextPage ? data.length + 1 : data.length;
   const loadMoreItems = isLoadingMore ? () => {} : loadMore;
-  const isItemLoaded = (index: number) => index < data.length;
+  const isItemLoaded = (index: number) => !hasNextPage || index < data.length;
 
   const virtualRow = ({ index, style }: any) => (
     <div
@@ -36,13 +36,15 @@ export default function ({ data, isLoadingMore, loadMore }: any) {
   );
 
   return (
-    <ListFrame>
+    <ListFrameWrapper>
       <AutoSizer>
         {({ height, width }) => (
           <InfiniteLoader
             isItemLoaded={isItemLoaded}
             itemCount={itemCount}
             loadMoreItems={loadMoreItems}
+            // If threshold too high, might trigger duplicated request on initial parse
+            threshold={8}
           >
             {({ onItemsRendered, ref }) => (
               <List
@@ -68,6 +70,10 @@ export default function ({ data, isLoadingMore, loadMore }: any) {
           </InfiniteLoader>
         )}
       </AutoSizer>
-    </ListFrame>
+    </ListFrameWrapper>
   );
 }
+
+ListFrame.whyDidYouRender = true;
+
+export default ListFrame;

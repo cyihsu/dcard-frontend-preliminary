@@ -15,6 +15,7 @@
     "@types/react-virtualized-auto-sizer": "^1.0.0",
     "@types/react-window": "^1.8.1",
     "@types/react-window-infinite-loader": "^1.0.2",
+    "@welldone-software/why-did-you-render": "^4.0.7",
     "react": "^16.13.1",
     "react-content-loader": "^5.0.4",
     "react-dom": "^16.13.1",
