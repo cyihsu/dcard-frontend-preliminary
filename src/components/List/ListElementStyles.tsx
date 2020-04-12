@@ -14,7 +14,6 @@ export const ListElementInnerStyle = styled.article`
     "footer thumb";
   grid-template-columns: 1fr fit-content(84px);
   grid-row-gap: 12px;
-  cursor: pointer;
   border-radius: 8px;
   padding: 20px 40px;
   background: var(--pure-background);
@@ -35,6 +34,7 @@ export const ListForumName = styled.div`
   padding: 0.2rem 0.4rem;
   background-color: var(--dcard-corp-color);
   color: white;
+  cursor: pointer;
 `;
 
 export const ListEntity = styled.div`
@@ -70,6 +70,7 @@ export const ListFooter = styled.div`
 export const ListMain = styled.div`
   grid-area: main / main / main / main;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 export const ListTitle = styled.h2`

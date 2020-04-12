@@ -10,10 +10,14 @@ interface UIActions {
 
 interface UIStates {
   listScrolled: boolean;
+  toggleModal: boolean;
+  currentForum: string;
 }
 
 const initState: UIStates = {
   listScrolled: false,
+  toggleModal: false,
+  currentForum: "",
 };
 
 export const UIContext = React.createContext<{
@@ -53,6 +57,25 @@ const UIReducer: React.Reducer<UIStates, UIActions> = (state, action) => {
         ...state,
         listScrolled: false,
       };
+    case "CLOSE_MODAL":
+      return {
+        ...state,
+        toggleModal: false,
+      };
+    case "OPEN_MODAL":
+      return {
+        ...state,
+        toggleModal: true,
+      };
+    case "SET_CURRENT_FORUM":
+      if (action.payload !== undefined) {
+        return {
+          ...state,
+          currentForum: action.payload.value as string,
+        };
+      } else {
+        return state;
+      }
     default:
       return state;
   }

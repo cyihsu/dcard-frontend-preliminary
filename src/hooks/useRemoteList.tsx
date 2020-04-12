@@ -3,19 +3,24 @@ import React from "react";
 import { PostList } from "../types/PostList";
 import { jsonFetcher } from "../utils/fetch";
 import REMOTE_CONSTS from "../remote.json";
+import { UIContext } from "../contexts/UIContext";
 
 export function useRemoteList(board?: string) {
   const [data, setData] = React.useState<PostList[]>([]);
   const [cursor, setCursor] = React.useState<number>();
   const [triggerCursor, setTriggerFlag] = React.useState<boolean>();
-  const [initFlag, setInit] = React.useState<boolean>(false);
+  const { state } = React.useContext(UIContext);
 
   // Set for calling from outside
   const appendResult = () => setTriggerFlag(true);
 
   React.useEffect(() => {
+    setData([]);
+    setCursor(undefined);
+  }, [state.currentForum]);
+
+  React.useEffect(() => {
     if (triggerCursor) {
-      console.log(triggerCursor, cursor, board);
       const forumString =
         REMOTE_CONSTS.POPULAR_LIST + (board ? `&forum=${board}` : "");
       const URL = cursor ? forumString + `&before=${cursor}` : forumString;
@@ -28,7 +33,7 @@ export function useRemoteList(board?: string) {
       });
       setTriggerFlag(false);
     }
-  }, [triggerCursor, cursor]);
+  }, [triggerCursor, cursor, board]);
 
   return [data, cursor !== -1, triggerCursor, appendResult];
 }

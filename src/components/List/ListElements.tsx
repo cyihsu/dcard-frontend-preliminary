@@ -15,34 +15,39 @@ import {
 } from "./ListElementStyles";
 import ListLoader from "./ListLoader";
 import { useRemotePost } from "../../hooks/useRemotePost";
+import { UIContext } from "../../contexts/UIContext";
 
 const ListElement: React.FC<{
   content?: PostList;
 }> = ({ content }) => {
   const [currentPostId, setCurrentPost] = React.useState<string>("");
+  const { dispatch } = React.useContext(UIContext);
   const [post] = useRemotePost(currentPostId);
-
-  React.useEffect(() => {
-    if (currentPostId !== "" && post.length !== 0) {
-      console.log(post);
-    }
-  }, [post, currentPostId]);
 
   return content ? (
     <ListElementWrapperStyle>
-      <ListElementInnerStyle
-        onClick={() => {
-          setCurrentPost(content.id.toString());
-        }}
-      >
+      <ListElementInnerStyle>
         <ListHeader>
-          <ListForumName>{content.forumName}</ListForumName>
+          <ListForumName
+            onClick={() => {
+              dispatch({
+                type: "SET_CURRENT_FORUM",
+                payload: { attr: "forum", value: content.forumAlias },
+              });
+            }}
+          >
+            {content.forumName}
+          </ListForumName>
           <ListEntity>{content.school ? content.school : "匿名"}</ListEntity>
           <ListEntity>
             {content && dateStringToChinese(content.createdAt)}
           </ListEntity>
         </ListHeader>
-        <ListMain>
+        <ListMain
+          onClick={() => {
+            setCurrentPost(content.id.toString());
+          }}
+        >
           <ListTitle>{content.title}</ListTitle>
           <ListExcerpt>
             <span>{content.excerpt}</span>

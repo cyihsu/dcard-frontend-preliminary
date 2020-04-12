@@ -7,8 +7,9 @@ import List from "./components/List";
 import MainFrame from "./components/Frame/MainFrame";
 import Nav from "./components/Nav";
 
-import { UIContextProvider } from "./contexts/UIContext";
 import { useRemoteList } from "./hooks/useRemoteList";
+import ModalFrame from "./components/Post/ModalBackground";
+import { UIContext } from "./contexts/UIContext";
 
 const GlobalWrapper = styled.div`
   background-color: var(--global-background-color);
@@ -17,24 +18,23 @@ const GlobalWrapper = styled.div`
 `;
 
 function App() {
-  const [currentBoard] = React.useState("");
+  const { state } = React.useContext(UIContext);
   const [data, hasNextPage, triggerCursor, appendResult] = useRemoteList(
-    currentBoard
+    state.currentForum
   );
 
   return (
     <GlobalWrapper>
-      <UIContextProvider>
-        <Nav />
-        <MainFrame>
-          <List
-            data={data}
-            hasNextPage={hasNextPage}
-            isLoadingMore={triggerCursor}
-            loadMore={appendResult}
-          />
-        </MainFrame>
-      </UIContextProvider>
+      <Nav />
+      <ModalFrame />
+      <MainFrame>
+        <List
+          data={data}
+          hasNextPage={hasNextPage}
+          isLoadingMore={triggerCursor}
+          loadMore={appendResult}
+        />
+      </MainFrame>
     </GlobalWrapper>
   );
 }
