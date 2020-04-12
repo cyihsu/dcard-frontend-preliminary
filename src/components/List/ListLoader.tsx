@@ -4,7 +4,7 @@ import ContentLoader from "react-content-loader";
 const ListLoader = () => (
   <ContentLoader
     speed={2}
-    height={100}
+    height={83}
     viewBox="0 0 800 100"
     backgroundColor="#fafafa"
     foregroundColor="var(--dcard-corp-color)"

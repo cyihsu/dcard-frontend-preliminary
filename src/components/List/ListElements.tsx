@@ -20,7 +20,11 @@ const ListElement: React.FC<{
 }> = ({ content }) => {
   return content ? (
     <ListElementWrapperStyle>
-      <ListElementInnerStyle>
+      <ListElementInnerStyle
+        onClick={() => {
+          console.log(content.id);
+        }}
+      >
         <ListHeader>
           <ListForumName>{content.forumName}</ListForumName>
           <ListEntity>{content.school ? content.school : "匿名"}</ListEntity>

@@ -21,18 +21,17 @@ const GlobalWrapper = styled.div`
 function App() {
   const [data, setData] = React.useState<PostList[]>([]);
   const [cursor, setCursor] = React.useState<number>();
-  const [triggerCursor, setTriggerFlag] = React.useState<boolean>(false);
+  const [triggerCursor, setTriggerFlag] = React.useState<boolean>();
 
-  function appendResult() {
+  const appendResult = React.useCallback(() => {
     setTriggerFlag(true);
-  }
+  }, []);
 
   React.useEffect(() => {
-    if (triggerCursor || !data?.length) {
+    if (triggerCursor) {
       const URL = data?.length
         ? REMOTE_CONSTS.INFINITE_SCROLL + cursor
         : REMOTE_CONSTS.POPULAR_LIST;
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       jsonFetcher(URL).then((result) => {
         setData([...data, ...result]);
         setCursor(result[result.length - 1].id);

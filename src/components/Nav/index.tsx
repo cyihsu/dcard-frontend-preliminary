@@ -10,7 +10,6 @@ function Nav() {
   return (
     <nav
       style={{
-        zIndex: 10,
         backgroundColor: validToTransform
           ? "transparent"
           : "var(--dcard-corp-color)",
