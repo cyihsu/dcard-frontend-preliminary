@@ -5,12 +5,12 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { UIContextProvider } from "./contexts/UIContext";
 
-/*
 if (process.env.NODE_ENV === "development") {
   const whyDidYouRender = require("@welldone-software/why-did-you-render");
-  whyDidYouRender(React);
+  whyDidYouRender(React, {
+    trackAllPureComponents: true,
+  });
 }
-*/
 
 ReactDOM.render(
   <React.StrictMode>

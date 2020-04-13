@@ -85,6 +85,8 @@ export const ListThumb = styled.img`
   margin-left: 20px;
   grid-area: thumb / thumb / thumb / thumb;
   overflow: hidden;
+  width: 84px;
+  height: 84px;
   border-radius: 4px;
   border-width: 1px;
   border-style: solid;

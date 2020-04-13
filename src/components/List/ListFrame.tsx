@@ -6,6 +6,7 @@ import InfiniteLoader from "react-window-infinite-loader";
 
 import ListElements from "./ListElements";
 import { UIContext } from "../../contexts/UIContext";
+import ListLoader from "./ListLoader";
 
 const ListFrameWrapper = styled.div`
   position: fixed;
@@ -31,7 +32,7 @@ function ListFrame({ data, hasNextPage, isLoadingMore, loadMore }: any) {
         top: `${parseFloat(style.top) + 90}px`,
       }}
     >
-      <ListElements content={data && data[index]} />
+      {data[index] ? <ListElements content={data[index]} /> : <ListLoader />}
     </div>
   );
 

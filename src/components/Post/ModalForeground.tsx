@@ -7,25 +7,21 @@ const ModalFrame = (displayState: boolean) =>
   css({
     visibility: displayState ? "visible" : "hidden",
     height: "100vh",
-    width: "100vw",
+    width: "780px",
+    borderRadius: "8px",
     position: "absolute",
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    zIndex: 10,
-    backgroundColor: `rgb(0, 0, 0, ${displayState ? 0.8 : 0})`,
+    top: "50%",
+    left: "50%",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    zIndex: 20,
+    opacity: displayState ? 1 : 0,
+    backgroundColor: `white`,
     transition: "all 300ms ease-in",
   });
 
 export default function () {
-  const { state, dispatch } = React.useContext(UIContext);
-  return (
-    <div
-      css={ModalFrame(state.toggleModal)}
-      onClick={() => {
-        dispatch({ type: "CLOSE_MODAL" });
-      }}
-    />
-  );
+  const { state } = React.useContext(UIContext);
+
+  return <div css={ModalFrame(state.toggleModal)}>dasd</div>;
 }

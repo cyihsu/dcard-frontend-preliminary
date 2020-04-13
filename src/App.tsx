@@ -8,8 +8,7 @@ import MainFrame from "./components/Frame/MainFrame";
 import Nav from "./components/Nav";
 
 import { useRemoteList } from "./hooks/useRemoteList";
-import ModalFrame from "./components/Post/ModalBackground";
-import { UIContext } from "./contexts/UIContext";
+import Modal from "./components/Post";
 
 const GlobalWrapper = styled.div`
   background-color: var(--global-background-color);
@@ -18,23 +17,28 @@ const GlobalWrapper = styled.div`
 `;
 
 function App() {
-  const { state } = React.useContext(UIContext);
-  const [data, hasNextPage, triggerCursor, appendResult] = useRemoteList(
-    state.currentForum
+  const [data, hasNextPage, triggerCursor, appendResult] = useRemoteList();
+  // Avoid the whole frame being rerendered, only rerender on data changed
+  const memedList = React.useMemo(
+    () => (
+      <List
+        data={data}
+        hasNextPage={hasNextPage}
+        isLoadingMore={triggerCursor}
+        loadMore={appendResult}
+      />
+    ),
+    // Trigger update only on data changed
+    // Remark: might lead to stale closures, see facebook/cra issue #6880
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [data]
   );
 
   return (
     <GlobalWrapper>
       <Nav />
-      <ModalFrame />
-      <MainFrame>
-        <List
-          data={data}
-          hasNextPage={hasNextPage}
-          isLoadingMore={triggerCursor}
-          loadMore={appendResult}
-        />
-      </MainFrame>
+      <Modal />
+      <MainFrame>{memedList}</MainFrame>
     </GlobalWrapper>
   );
 }

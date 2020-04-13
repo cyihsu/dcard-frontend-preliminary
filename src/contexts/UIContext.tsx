@@ -12,12 +12,14 @@ interface UIStates {
   listScrolled: boolean;
   toggleModal: boolean;
   currentForum: string;
+  currentPost: number;
 }
 
 const initState: UIStates = {
   listScrolled: false,
   toggleModal: false,
   currentForum: "",
+  currentPost: 0,
 };
 
 export const UIContext = React.createContext<{
@@ -61,12 +63,18 @@ const UIReducer: React.Reducer<UIStates, UIActions> = (state, action) => {
       return {
         ...state,
         toggleModal: false,
+        currentPost: 0,
       };
     case "OPEN_MODAL":
-      return {
-        ...state,
-        toggleModal: true,
-      };
+      if (action.payload !== undefined) {
+        return {
+          ...state,
+          toggleModal: true,
+          currentPost: parseInt(action.payload.value as string, 10),
+        };
+      } else {
+        return state;
+      }
     case "SET_CURRENT_FORUM":
       if (action.payload !== undefined) {
         return {

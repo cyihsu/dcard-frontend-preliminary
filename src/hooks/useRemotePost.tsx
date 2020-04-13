@@ -13,12 +13,15 @@ export function useRemotePost(postID?: string) {
       const URL = REMOTE_CONSTS.POST_ENDPOINT + postID;
       jsonFetcher(URL).then((result) => {
         setData(result);
-        dispatch({ type: "OPEN_MODAL" });
+        dispatch({
+          type: "OPEN_MODAL",
+          payload: { attr: "post", value: postID },
+        });
       });
     } else {
       setData([]);
     }
-  }, [postID]);
+  }, [postID, dispatch]);
 
   return [data];
 }

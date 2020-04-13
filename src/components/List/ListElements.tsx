@@ -13,29 +13,41 @@ import {
   ListFooter,
   ListThumb,
 } from "./ListElementStyles";
-import ListLoader from "./ListLoader";
 import { useRemotePost } from "../../hooks/useRemotePost";
 import { UIContext } from "../../contexts/UIContext";
 
 const ListElement: React.FC<{
-  content?: PostList;
+  content: PostList;
 }> = ({ content }) => {
   const [currentPostId, setCurrentPost] = React.useState<string>("");
-  const { dispatch } = React.useContext(UIContext);
-  const [post] = useRemotePost(currentPostId);
+  const { state, dispatch } = React.useContext(UIContext);
+  useRemotePost(currentPostId);
 
-  return content ? (
+  const togglePost = () => {
+    if (!state.toggleModal) {
+      setCurrentPost(content.id.toString());
+      dispatch({
+        type: "OPEN_MODAL",
+        payload: { attr: "post", value: content.id },
+      });
+    }
+  };
+
+  const toggleForum = () => {
+    dispatch({
+      type: "SET_CURRENT_FORUM",
+      payload: { attr: "forum", value: content.forumAlias },
+    });
+    dispatch({
+      type: "CLOSE_MODAL",
+    });
+  };
+
+  return (
     <ListElementWrapperStyle>
       <ListElementInnerStyle>
         <ListHeader>
-          <ListForumName
-            onClick={() => {
-              dispatch({
-                type: "SET_CURRENT_FORUM",
-                payload: { attr: "forum", value: content.forumAlias },
-              });
-            }}
-          >
+          <ListForumName onClick={toggleForum}>
             {content.forumName}
           </ListForumName>
           <ListEntity>{content.school ? content.school : "匿名"}</ListEntity>
@@ -43,11 +55,7 @@ const ListElement: React.FC<{
             {content && dateStringToChinese(content.createdAt)}
           </ListEntity>
         </ListHeader>
-        <ListMain
-          onClick={() => {
-            setCurrentPost(content.id.toString());
-          }}
-        >
+        <ListMain onClick={togglePost}>
           <ListTitle>{content.title}</ListTitle>
           <ListExcerpt>
             <span>{content.excerpt}</span>
@@ -57,21 +65,9 @@ const ListElement: React.FC<{
           <ListEntity>{content.likeCount}</ListEntity>
           <ListEntity>回應 {content.commentCount}</ListEntity>
         </ListFooter>
-        {content.media?.length ? (
-          <ListThumb
-            src={content.media[0].url}
-            width="84px"
-            height="84px"
-            alt=""
-            loading="lazy"
-          />
-        ) : undefined}
-      </ListElementInnerStyle>
-    </ListElementWrapperStyle>
-  ) : (
-    <ListElementWrapperStyle>
-      <ListElementInnerStyle>
-        <ListLoader />
+        {content.media[0] && (
+          <ListThumb src={content.media[0].url} alt="" loading="lazy" />
+        )}
       </ListElementInnerStyle>
     </ListElementWrapperStyle>
   );
