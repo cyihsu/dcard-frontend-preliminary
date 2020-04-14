@@ -1,5 +1,7 @@
 /** @jsx jsx */
 import React from "react";
+import ReactTooltip from "react-tooltip";
+
 import { jsx } from "@emotion/core";
 
 import DcardLogo from "../../assets/logo.svg";
@@ -15,6 +17,8 @@ export default function () {
           <img
             src={DcardLogo}
             alt="Dcard"
+            data-for={`tooltip-home`}
+            data-tip={`回首頁`}
             onClick={() => {
               dispatch({
                 type: "SET_CURRENT_FORUM",
@@ -22,6 +26,7 @@ export default function () {
               });
             }}
           />
+          <ReactTooltip id={`tooltip-home`} className="tooltip" />
         </div>
       </div>
     </nav>

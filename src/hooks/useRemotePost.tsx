@@ -4,7 +4,7 @@ import { jsonFetcher } from "../utils/fetch";
 import REMOTE_CONSTS from "../remote.json";
 
 export function useRemotePost(postID?: number) {
-  const [data, setData] = React.useState<Post[]>([]);
+  const [data, setData] = React.useState<Post>();
 
   React.useEffect(() => {
     if (postID) {
@@ -13,9 +13,9 @@ export function useRemotePost(postID?: number) {
         setData(result);
       });
     } else {
-      setData([]);
+      setData(undefined);
     }
   }, [postID]);
 
-  return [data];
+  return data;
 }

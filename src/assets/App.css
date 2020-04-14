@@ -2,6 +2,7 @@
   --global-outer-width: 1100px;
   --global-background-color: #f3f3f3;
   --dcard-corp-color: #006aa6;
+  --dcard-dark-color: #00324e;
   --dcard-link-color: #3397cf;
   --pure-background: #fff;
   --hover-background: #f5f8fa;
@@ -51,10 +52,6 @@ img {
   box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
 body,
 html {
   height: 100%;
@@ -99,4 +96,14 @@ ul {
 a {
   color: var(--dcard-link-color);
   text-decoration: none;
+}
+
+.tooltip {
+  font-size: 16px !important;
+  padding: 0.5rem !important;
+  background-color: var(--dcard-dark-color) !important;
+}
+
+html {
+  overflow: -moz-scrollbars-none;
 }

@@ -1605,6 +1605,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-tooltip@^3.11.0":
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/@types/react-tooltip/-/react-tooltip-3.11.0.tgz#e7e7e9c67629f2b6f75ea67752922c9de0b64468"
+  integrity sha512-TkXMgkZ5aAKkFE9Wvt8OlOiPtF9ufgBOL9xWlRSzLBaoL12qSOBiyMcU4/8TyED1fuWkm5VTVarScwOPLSArYw==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-virtualized-auto-sizer@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/react-virtualized-auto-sizer/-/react-virtualized-auto-sizer-1.0.0.tgz#fc32f30a8dab527b5816f3a757e1e1d040c8f272"
@@ -8671,7 +8678,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8872,15 +8879,14 @@ react-dev-utils@^10.2.1:
     strip-ansi "6.0.0"
     text-table "0.2.0"
 
-react-dom@^16.13.1:
-  version "16.13.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.1.tgz#c1bd37331a0486c078ee54c4740720993b2e0e7f"
-  integrity sha512-81PIMmVLnCNLO/fFOQxdQkvEq/+Hfpv24XNJfpyZhTRfO0QcmQIF/PgCa1zCOj2w1hrn12MFLyaJ/G0+Mxtfag==
+react-dom@^0.0.0-experimental-e5d06e34b:
+  version "0.0.0-experimental-e5d06e34b"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-0.0.0-experimental-e5d06e34b.tgz#e90fd8a1f5ac18045798f276734feecdf107442e"
+  integrity sha512-E2jMRRCHs69jfI5YMnUEFEdWLv1FthDE52xDP67luRVGBU+Hc2xq06Eu+ukiHgCevgwAqBM4Q9HeYbQrcBvFdg==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.19.1"
+    scheduler "0.0.0-experimental-e5d06e34b"
 
 react-error-overlay@^6.0.7:
   version "6.0.7"
@@ -8952,6 +8958,14 @@ react-scripts@3.4.1:
   optionalDependencies:
     fsevents "2.1.2"
 
+react-tooltip@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-4.2.3.tgz#da9bdc9f4322392fb43de0dd6cf002f95e43d35b"
+  integrity sha512-VduZryAPVlgnSLlq6qukBrzBkiATXorx3FzC1eX3OaCknPxTuULEQwR0nJkxo2MgpzKMw0t9LFjzVbS9KQGaYA==
+  dependencies:
+    prop-types "^15.7.2"
+    uuid "^7.0.3"
+
 react-virtualized-auto-sizer@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-virtualized-auto-sizer/-/react-virtualized-auto-sizer-1.0.2.tgz#a61dd4f756458bbf63bd895a92379f9b70f803bd"
@@ -8970,14 +8984,13 @@ react-window@^1.8.5:
     "@babel/runtime" "^7.0.0"
     memoize-one ">=3.1.1 <6"
 
-react@^16.13.1:
-  version "16.13.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
-  integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==
+react@^0.0.0-experimental-e5d06e34b:
+  version "0.0.0-experimental-e5d06e34b"
+  resolved "https://registry.yarnpkg.com/react/-/react-0.0.0-experimental-e5d06e34b.tgz#bfdbe2b228e1d1967330fc18b9e05331818f610d"
+  integrity sha512-2WUOtH5VE3cSyg22XxavfDoMQDIc51Pyudr/mrU1I1GcWIDKVg7QA/1dh5DlKyIvyWlM44pkwqz7V7gYHFzf2A==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.2"
 
 read-pkg-up@^2.0.0:
   version "2.0.0"
@@ -9462,10 +9475,10 @@ saxes@^3.1.9:
   dependencies:
     xmlchars "^2.1.1"
 
-scheduler@^0.19.1:
-  version "0.19.1"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.19.1.tgz#4f3e2ed2c1a7d65681f4c854fa8c5a1ccb40f196"
-  integrity sha512-n/zwRWRYSUj0/3g/otKDRPMh6qv2SYMWNq85IEa8iZyAv8od9zDYpGSnpBEjNgcMNq6Scbu5KfIPxNF72R/2EA==
+scheduler@0.0.0-experimental-e5d06e34b:
+  version "0.0.0-experimental-e5d06e34b"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.0.0-experimental-e5d06e34b.tgz#59a67c60b34c2c136b2f6d8daf9af74f91d97659"
+  integrity sha512-S4uANOeUKNI32GLMS28KvY7BHmtJL9Am3EsUB3WTr6Of5RNz1lEH0Qutc+j90GcgYM67l1qPOiO9sVLTdnTkxw==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -10686,6 +10699,11 @@ uuid@^3.0.1, uuid@^3.3.2:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
+
+uuid@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
+  integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
 v8-compile-cache@^2.0.3:
   version "2.1.0"

@@ -1,4 +1,5 @@
 import React from "react";
+import ReactTooltip from "react-tooltip";
 import styled from "@emotion/styled";
 
 // Extracted from original chunks
@@ -23,7 +24,7 @@ function App() {
   const [PostList, hasNextPage, triggerCursor, appendResult] = useRemoteList(
     state.currentForum
   );
-  const [Post] = useRemotePost(state.currentPost);
+  const Post = useRemotePost(state.currentPost);
   // Avoid the whole frame being rerendered, only rerender on data changed
   const memList = React.useMemo(
     () => (
@@ -43,7 +44,8 @@ function App() {
   return (
     <GlobalWrapper>
       <Nav />
-      <Modal data={Post[0]} />
+      <ReactTooltip />
+      <Modal data={Post || undefined} />
       <MainFrame>{memList}</MainFrame>
     </GlobalWrapper>
   );

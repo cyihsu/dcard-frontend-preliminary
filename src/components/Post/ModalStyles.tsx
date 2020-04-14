@@ -32,13 +32,20 @@ export const ModalFrame = (displayState: boolean) =>
     opacity: displayState ? 1 : 0,
     backgroundColor: `white`,
     transition: "opacity 300ms ease-in",
+    "@media (max-width: 1000px)": {
+      height: "100vh",
+      borderRadius: 0,
+    },
   });
 
 export const ModalInner = styled.div`
   height: 100%;
   width: 100%;
-  padding: 24px;
+  padding: 5rem;
   display: block;
   overflow-wrap: break-word;
   white-space: pre-wrap;
+  @media (max-width: 600px) {
+    padding: 1rem;
+  }
 `;

@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import App from "./App";
+
 import * as serviceWorker from "./serviceWorker";
 import { UIContextProvider } from "./contexts/UIContext";
 
@@ -12,20 +13,20 @@ if (process.env.NODE_ENV === "development") {
   });
 }
 
-/*ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <UIContextProvider>
       <App />
     </UIContextProvider>
   </React.StrictMode>
-);*/
-ReactDOM.render(
+);
+/*ReactDOM.render(
   <React.StrictMode>
     <UIContextProvider>
       <App />
     </UIContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
-);
+);*/
 
 serviceWorker.register();

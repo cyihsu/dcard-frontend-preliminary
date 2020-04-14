@@ -5,7 +5,6 @@ import {
   ListElementWrapperStyle,
   ListElementInnerStyle,
   ListHeader,
-  ListForumName,
   ListEntity,
   ListMain,
   ListTitle,
@@ -14,6 +13,7 @@ import {
   ListThumb,
 } from "./ListElementStyles";
 import { UIContext } from "../../contexts/UIContext";
+import ListForumLabel from "./ListForumLabel";
 
 const ListElement: React.FC<{
   content: PostList;
@@ -28,23 +28,15 @@ const ListElement: React.FC<{
     }
   };
 
-  const toggleForum = () => {
-    dispatch({
-      type: "SET_CURRENT_FORUM",
-      payload: { attr: "forum", value: content.forumAlias },
-    });
-    dispatch({
-      type: "CLOSE_MODAL",
-    });
-  };
-
   return (
     <ListElementWrapperStyle>
       <ListElementInnerStyle>
         <ListHeader>
-          <ListForumName onClick={toggleForum}>
-            {content.forumName}
-          </ListForumName>
+          <ListForumLabel
+            id={content.id}
+            forumName={content.forumName}
+            forumAlias={content.forumAlias}
+          />
           <ListEntity>{content.school ? content.school : "匿名"}</ListEntity>
           <ListEntity>
             {content && dateStringToChinese(content.createdAt)}
