@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "@emotion/styled";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import InfiniteLoader from "react-window-infinite-loader";
@@ -7,16 +6,7 @@ import InfiniteLoader from "react-window-infinite-loader";
 import ListElements from "./ListElements";
 import { UIContext } from "../../contexts/UIContext";
 import ListLoader from "./ListLoader";
-
-const ListFrameWrapper = styled.div`
-  position: fixed;
-  top: 0;
-  height: 100vh;
-  width: 800px;
-  @media (max-width: 800px) {
-    width: 98vw;
-  }
-`;
+import { ListFrameWrapper } from "./ListElementStyles";
 
 function ListFrame({ data, hasNextPage, isLoadingMore, loadMore }: any) {
   const { state, dispatch } = React.useContext(UIContext);
@@ -36,6 +26,15 @@ function ListFrame({ data, hasNextPage, isLoadingMore, loadMore }: any) {
     </div>
   );
 
+  const handleScroll = ({ scrollOffset }: any) => {
+    // Reduce Reducer Calls
+    // prettier-ignore
+    if (state.listScrolled !== (scrollOffset > 0)) {
+      dispatch({
+        type: scrollOffset > 0 ? "USER_NOT_AT_TOP" : "USER_AT_TOP",
+      });
+    }
+  };
   return (
     <ListFrameWrapper>
       <AutoSizer>
@@ -55,15 +54,7 @@ function ListFrame({ data, hasNextPage, isLoadingMore, loadMore }: any) {
                 width={width}
                 ref={ref}
                 onItemsRendered={onItemsRendered}
-                onScroll={({ scrollOffset }) => {
-                  // Reduce Reducer Calls
-                  // prettier-ignore
-                  if (state.listScrolled !== (scrollOffset > 0)) {
-                    dispatch({
-                      type: scrollOffset > 0 ? "USER_NOT_AT_TOP" : "USER_AT_TOP",
-                    });
-                  }
-                }}
+                onScroll={handleScroll}
               >
                 {virtualRow}
               </List>

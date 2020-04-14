@@ -9,7 +9,7 @@ export const NavWrapper = (changeColor: boolean) =>
     position: "fixed",
     display: "flex",
     justifyContent: "center",
-    transition: "300ms all",
+    transition: "all 300ms ease-in",
     img: {
       display: "inline-block",
       height: "100%",

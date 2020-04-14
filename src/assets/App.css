@@ -5,6 +5,7 @@
   --dcard-link-color: #3397cf;
   --pure-background: #fff;
   --hover-background: #f5f8fa;
+  --loader-background: #fafafa;
 
   --svg-white: invert(21%) sepia(68%) saturate(3161%) hue-rotate(185deg)
     brightness(98%) contrast(102%);

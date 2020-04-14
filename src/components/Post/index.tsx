@@ -1,12 +1,3 @@
-import React from "react";
-import ModalBackground from "./ModalBackground";
-import ModalForeground from "./ModalForeground";
+import Modal from "./Modal";
 
-export default function () {
-  return (
-    <React.Fragment>
-      <ModalForeground />
-      <ModalBackground />
-    </React.Fragment>
-  );
-}
+export default Modal;

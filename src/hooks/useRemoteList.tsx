@@ -3,13 +3,10 @@ import React from "react";
 import { PostList } from "../types/PostList";
 import { jsonFetcher } from "../utils/fetch";
 import REMOTE_CONSTS from "../remote.json";
-import { UIContext } from "../contexts/UIContext";
-
-export function useRemoteList() {
+export function useRemoteList(forum: string) {
   const [data, setData] = React.useState<PostList[]>([]);
   const [cursor, setCursor] = React.useState<number>();
   const [triggerCursor, setTriggerFlag] = React.useState<boolean>();
-  const { state } = React.useContext(UIContext);
 
   // Set for calling from outside
   const appendResult = () => setTriggerFlag(true);
@@ -17,13 +14,12 @@ export function useRemoteList() {
   React.useEffect(() => {
     setData([]);
     setCursor(undefined);
-  }, [state.currentForum]);
+  }, [forum]);
 
   React.useEffect(() => {
     if (triggerCursor) {
       const forumString =
-        REMOTE_CONSTS.POPULAR_LIST +
-        (state.currentForum !== "" ? `&forum=${state.currentForum}` : "");
+        REMOTE_CONSTS.POPULAR_LIST + (forum.length ? `&forum=${forum}` : "");
       const URL = cursor ? forumString + `&before=${cursor}` : forumString;
       // Fetch
       jsonFetcher(URL).then((result) => {
@@ -34,7 +30,7 @@ export function useRemoteList() {
       });
       setTriggerFlag(false);
     }
-  }, [triggerCursor, cursor, state.currentForum]);
+  }, [triggerCursor, cursor, forum]);
 
   return [data, cursor !== -1, triggerCursor, appendResult];
 }

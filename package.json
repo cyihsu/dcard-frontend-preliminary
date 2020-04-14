@@ -16,11 +16,9 @@
     "@types/react-window": "^1.8.1",
     "@types/react-window-infinite-loader": "^1.0.2",
     "@welldone-software/why-did-you-render": "^4.0.7",
-    "memoize-one": "^5.1.1",
     "react": "^16.13.1",
     "react-content-loader": "^5.0.4",
     "react-dom": "^16.13.1",
-    "react-keydown": "^1.9.12",
     "react-scripts": "3.4.1",
     "react-virtualized-auto-sizer": "^1.0.2",
     "react-window": "^1.8.5",
@@ -28,9 +26,9 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "analyze": "yarn build && source-map-explorer 'build/static/js/*.js'",
+    "analyze": "react-scripts build && source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test"
   },
   "eslintConfig": {

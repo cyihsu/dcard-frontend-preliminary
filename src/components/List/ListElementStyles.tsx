@@ -1,5 +1,15 @@
 import styled from "@emotion/styled";
 
+export const ListFrameWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 800px;
+  @media (max-width: 800px) {
+    width: 98vw;
+  }
+`;
+
 export const ListElementWrapperStyle = styled.div`
   padding-right: 10px;
   padding-left: 10px;
@@ -85,8 +95,6 @@ export const ListThumb = styled.img`
   margin-left: 20px;
   grid-area: thumb / thumb / thumb / thumb;
   overflow: hidden;
-  width: 84px;
-  height: 84px;
   border-radius: 4px;
   border-width: 1px;
   border-style: solid;

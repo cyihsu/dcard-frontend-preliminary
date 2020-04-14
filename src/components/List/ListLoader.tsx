@@ -12,7 +12,7 @@ const ListLoader = () => (
         speed={2}
         height={83}
         viewBox="0 0 800 100"
-        backgroundColor="#fafafa"
+        backgroundColor="var(--loader-background)"
         foregroundColor="var(--dcard-corp-color)"
       >
         <rect x="0" y="0" rx="3" ry="3" width="67" height="11" />

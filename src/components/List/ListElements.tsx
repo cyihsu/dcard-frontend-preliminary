@@ -13,19 +13,14 @@ import {
   ListFooter,
   ListThumb,
 } from "./ListElementStyles";
-import { useRemotePost } from "../../hooks/useRemotePost";
 import { UIContext } from "../../contexts/UIContext";
 
 const ListElement: React.FC<{
   content: PostList;
 }> = ({ content }) => {
-  const [currentPostId, setCurrentPost] = React.useState<string>("");
   const { state, dispatch } = React.useContext(UIContext);
-  useRemotePost(currentPostId);
-
   const togglePost = () => {
     if (!state.toggleModal) {
-      setCurrentPost(content.id.toString());
       dispatch({
         type: "OPEN_MODAL",
         payload: { attr: "post", value: content.id },
@@ -66,7 +61,13 @@ const ListElement: React.FC<{
           <ListEntity>回應 {content.commentCount}</ListEntity>
         </ListFooter>
         {content.media[0] && (
-          <ListThumb src={content.media[0].url} alt="" loading="lazy" />
+          <ListThumb
+            src={content.media[0].url}
+            alt=""
+            width="84px"
+            height="84px"
+            loading="lazy"
+          />
         )}
       </ListElementInnerStyle>
     </ListElementWrapperStyle>
