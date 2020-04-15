@@ -7,7 +7,6 @@ import {
   ReactionsElement,
 } from "./ListElementStyles";
 import reactionTypesRaw from "../../constants/reactions.json";
-import ReactTooltip from "react-tooltip";
 
 const reactionTypes: Map<string, ReactionTypes> = new Map();
 reactionTypesRaw.forEach((reaction: ReactionTypes) =>
@@ -25,7 +24,7 @@ const ListReaction: React.FC<{
         {reactions.map(
           (reaction, index) =>
             index < 3 && (
-              <React.Fragment>
+              <div key={`tooltip-${id}-${reaction.id}`}>
                 <ReactionWrap
                   data-for={`tooltip-${id}-${reaction.id}`}
                   data-tip={`${reactionTypes.get(reaction.id)?.name} ${
@@ -34,12 +33,7 @@ const ListReaction: React.FC<{
                 >
                   <ReactionsElement src={reactionTypes.get(reaction.id)?.url} />
                 </ReactionWrap>
-                <ReactTooltip
-                  id={`tooltip-${id}-${reaction.id}`}
-                  className="tooltip"
-                  place="top"
-                />
-              </React.Fragment>
+              </div>
             )
         )}
       </ReactionListWrap>

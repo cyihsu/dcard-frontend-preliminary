@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import React from "react";
-import ReactTooltip from "react-tooltip";
 
 import { jsx } from "@emotion/core";
 
@@ -26,8 +25,6 @@ export default function () {
               });
             }}
           />
-          <p style={{ height: "100%" }}>首頁版</p>
-          <ReactTooltip id={`tooltip-home`} className="tooltip" />
         </div>
       </div>
     </nav>

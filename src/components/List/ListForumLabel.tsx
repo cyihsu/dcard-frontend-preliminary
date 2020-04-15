@@ -1,5 +1,4 @@
 import React from "react";
-import ReactTooltip from "react-tooltip";
 
 import { ListForumName } from "./ListElementStyles";
 import { UIContext } from "../../contexts/UIContext";
@@ -29,7 +28,6 @@ const ListForumLabel: React.FC<{
       >
         {forumName}
       </ListForumName>
-      <ReactTooltip id={`tooltip-${id}`} className="tooltip" />
     </React.Fragment>
   );
 };

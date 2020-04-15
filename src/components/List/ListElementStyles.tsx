@@ -58,7 +58,7 @@ export const ListHeader = styled.div`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  div:not(:first-of-type):not(:nth-of-type(2))::before {
+  div:not(:first-of-type)::before {
     content: "・";
     margin-left: 0.1rem;
   }

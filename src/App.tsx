@@ -1,5 +1,4 @@
 import React from "react";
-import ReactTooltip from "react-tooltip";
 import styled from "@emotion/styled";
 
 // Extracted from original chunks
@@ -44,7 +43,6 @@ function App() {
   return (
     <GlobalWrapper>
       <Nav />
-      <ReactTooltip />
       <Modal data={Post || undefined} />
       <MainFrame>{memList}</MainFrame>
     </GlobalWrapper>
