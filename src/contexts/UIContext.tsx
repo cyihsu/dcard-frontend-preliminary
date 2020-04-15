@@ -11,14 +11,12 @@ interface UIActions {
 interface UIStates {
   listScrolled: boolean;
   toggleModal: boolean;
-  currentForum: string;
   currentPost: number;
 }
 
 const initState: UIStates = {
   listScrolled: false,
   toggleModal: false,
-  currentForum: "",
   currentPost: 0,
 };
 
@@ -71,15 +69,6 @@ const UIReducer: React.Reducer<UIStates, UIActions> = (state, action) => {
           ...state,
           toggleModal: true,
           currentPost: parseInt(action.payload.value as string, 10),
-        };
-      } else {
-        return state;
-      }
-    case "SET_CURRENT_FORUM":
-      if (action.payload !== undefined) {
-        return {
-          ...state,
-          currentForum: action.payload.value as string,
         };
       } else {
         return state;

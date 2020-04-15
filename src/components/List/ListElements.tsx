@@ -14,7 +14,7 @@ import {
 } from "./ListElementStyles";
 import { UIContext } from "../../contexts/UIContext";
 import ListForumLabel from "./ListForumLabel";
-import ListReaction from "./ListReaction";
+import Reactions from "../Reactions";
 
 const ListElement: React.FC<{
   content: PostList;
@@ -50,11 +50,8 @@ const ListElement: React.FC<{
           </ListExcerpt>
         </ListMain>
         <ListFooter>
-          <ListReaction
-            id={content.id}
-            reactions={content.reactions}
-            likeCount={content.likeCount}
-          />
+          <Reactions id={content.id} reactions={content.reactions} />
+          <ListEntity>{content.likeCount}</ListEntity>
           <ListEntity style={{ paddingLeft: "1rem" }}>
             回應 {content.commentCount}
           </ListEntity>

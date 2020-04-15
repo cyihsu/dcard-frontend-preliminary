@@ -40,21 +40,41 @@ export const ModalFrame = (displayState: boolean) =>
   });
 
 export const ModalInner = styled.article`
-  display: grid;
-
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
-  grid-template-columns: 1fr fit-content(84px);
-  grid-row-gap: 24px;
   height: 100%;
   width: 100%;
-  padding: 5rem;
-  display: block;
+  display: flex;
+  flex-direction: column;
   overflow-wrap: break-word;
   white-space: pre-wrap;
   @media (max-width: 600px) {
     padding: 1rem;
   }
+`;
+
+export const ModalHeader = styled.div`
+  width: 100%;
+  display: flex;
+  padding: 22px 60px;
+  justify-content: space-between;
+`;
+
+export const ModalHeaderItem = styled.div`
+  display: flex;
+  div {
+    padding-left: 1rem;
+  }
+`;
+
+export const MockLogo = styled.div`
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: var(--dcard-corp-color);
+  display: inline-block;
+`;
+
+export const ModalUserIdentity = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 `;

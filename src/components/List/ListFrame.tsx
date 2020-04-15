@@ -35,6 +35,7 @@ function ListFrame({ data, hasNextPage, isLoadingMore, loadMore }: any) {
       });
     }
   };
+
   return (
     <ListFrameWrapper>
       <AutoSizer>

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { Route, Switch, useParams } from "react-router-dom";
 
 // Extracted from original chunks
 import "./assets/App.css";
@@ -18,12 +19,12 @@ const GlobalWrapper = styled.div`
   height: 100vh;
 `;
 
-function App() {
-  const { state } = React.useContext(UIContext);
+function Forum() {
+  const { forum } = useParams();
   const [PostList, hasNextPage, triggerCursor, appendResult] = useRemoteList(
-    state.currentForum
+    forum || ""
   );
-  const Post = useRemotePost(state.currentPost);
+
   // Avoid the whole frame being rerendered, only rerender on data changed
   const memList = React.useMemo(
     () => (
@@ -40,11 +41,26 @@ function App() {
     [PostList]
   );
 
+  return <MainFrame>{memList}</MainFrame>;
+}
+
+function App() {
+  const { state } = React.useContext(UIContext);
+
+  const Post = useRemotePost(state.currentPost);
+
   return (
     <GlobalWrapper>
-      <Nav />
+      <Nav toggleNav={state.listScrolled || state.toggleModal} />
       <Modal data={Post || undefined} />
-      <MainFrame>{memList}</MainFrame>
+      <Switch>
+        <Route exact path="/">
+          <Forum />
+        </Route>
+        <Route path="/f/:forum">
+          <Forum />
+        </Route>
+      </Switch>
     </GlobalWrapper>
   );
 }

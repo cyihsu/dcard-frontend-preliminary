@@ -2,40 +2,46 @@
 import { jsx } from "@emotion/core";
 import React from "react";
 import { Post } from "../../types/Post";
-import { ModalInner } from "./ModalStyles";
 import {
-  ListHeader,
-  ListForumName,
-  ListEntity,
-  ListMain,
-  ListTitle,
-} from "../List/ListElementStyles";
+  ModalInner,
+  ModalHeader,
+  ModalHeaderItem,
+  MockLogo,
+  ModalUserIdentity,
+} from "./ModalStyles";
+import { ListEntity } from "../List/ListElementStyles";
 import { dateStringToChinese } from "../../utils/dateString";
-import { UIContext } from "../../contexts/UIContext";
 
 const ModalContent: React.FC<{ content: Post }> = ({ content }) => {
-  const { dispatch } = React.useContext(UIContext);
-  const toggleForum = () => {
-    dispatch({
-      type: "SET_CURRENT_FORUM",
-      payload: { attr: "forum", value: content.forumAlias },
-    });
-    dispatch({
-      type: "CLOSE_MODAL",
-    });
-  };
   return (
     <ModalInner>
-      <ListHeader>
-        <ListForumName onClick={toggleForum}>{content.forumName}</ListForumName>
-        <ListEntity>{content.school ? content.school : "匿名"}</ListEntity>
+      <ModalHeader>
+        <ModalHeaderItem>
+          <MockLogo />
+          <ModalUserIdentity>
+            <span style={{ fontSize: "16px" }}>
+              {content.school ? content.school : "匿名"}
+            </span>
+            {content.department && (
+              <span>
+                <a href={`https://www.dcard.tw/${content.department}`}>
+                  {content.department}
+                </a>
+              </span>
+            )}
+          </ModalUserIdentity>
+        </ModalHeaderItem>
         <ListEntity>
           {content && dateStringToChinese(content.createdAt)}
         </ListEntity>
-      </ListHeader>
-      <ListMain>
-        <ListTitle>{content.title}</ListTitle>
-      </ListMain>
+      </ModalHeader>
+
+      <div
+        style={{ overflow: "auto", paddingLeft: "60px", paddingRight: "60px" }}
+      >
+        <h1 style={{ padding: "22px 0px" }}>{content.title}</h1>
+        <span style={{ fontSize: "18px" }}>{content.content}</span>
+      </div>
     </ModalInner>
   );
 };
