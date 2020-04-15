@@ -1,7 +1,7 @@
 import React from "react";
 import { Post } from "../types/Post";
 import { jsonFetcher } from "../utils/fetch";
-import REMOTE_CONSTS from "../remote.json";
+import REMOTE_CONSTS from "../constants/remote.json";
 
 export function useRemotePost(postID?: number) {
   const [data, setData] = React.useState<Post>();

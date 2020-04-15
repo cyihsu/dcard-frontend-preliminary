@@ -19,3 +19,18 @@ export interface Reaction {
   id: string;
   count: number;
 }
+
+export interface ReactionTypes {
+  id: string;
+  name: string;
+  url: string;
+  position: number;
+  startAt: string;
+  endAt?: string | null;
+  rules: any;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt?: string | null;
+  active: boolean;
+  isGeneral: boolean;
+}

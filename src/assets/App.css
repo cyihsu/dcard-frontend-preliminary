@@ -61,8 +61,7 @@ body {
   font-family: Roboto, Helvetica Neue, Helvetica, Arial, PingFang TC, 黑體-繁,
     Heiti TC, 蘋果儷中黑, Apple LiGothic Medium, 微軟正黑體, Microsoft JhengHei,
     sans-serif;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden;
   margin: 0;
   width: 100%;
   font-size: 14px;
@@ -99,6 +98,7 @@ a {
 }
 
 .tooltip {
+  z-index: 30;
   font-size: 16px !important;
   padding: 0.5rem !important;
   background-color: var(--dcard-dark-color) !important;

@@ -26,6 +26,7 @@ export default function () {
               });
             }}
           />
+          <p style={{ height: "100%" }}>首頁版</p>
           <ReactTooltip id={`tooltip-home`} className="tooltip" />
         </div>
       </div>

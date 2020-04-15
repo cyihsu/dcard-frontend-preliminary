@@ -12,8 +12,9 @@ export const ModalBackground = (displayState: boolean) =>
     bottom: 0,
     left: 0,
     zIndex: 10,
-    backgroundColor: `rgb(0, 0, 0, ${displayState ? 0.5 : 0})`,
-    transition: "background-color 300ms ease-in",
+    opacity: displayState ? 0.5 : 0,
+    backgroundColor: "rgb(0, 0, 0)",
+    transition: "all 300ms ease-in-out",
   });
 
 export const ModalFrame = (displayState: boolean) =>
@@ -31,14 +32,22 @@ export const ModalFrame = (displayState: boolean) =>
     zIndex: 20,
     opacity: displayState ? 1 : 0,
     backgroundColor: `white`,
-    transition: "opacity 300ms ease-in",
+    transition: "all 300ms ease-in-out",
     "@media (max-width: 1000px)": {
       height: "100vh",
       borderRadius: 0,
     },
   });
 
-export const ModalInner = styled.div`
+export const ModalInner = styled.article`
+  display: grid;
+
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-columns: 1fr fit-content(84px);
+  grid-row-gap: 24px;
   height: 100%;
   width: 100%;
   padding: 5rem;

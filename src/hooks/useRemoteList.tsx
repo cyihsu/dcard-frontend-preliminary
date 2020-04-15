@@ -2,7 +2,7 @@ import React from "react";
 
 import { PostList } from "../types/PostList";
 import { jsonFetcher } from "../utils/fetch";
-import REMOTE_CONSTS from "../remote.json";
+import REMOTE_CONSTS from "../constants/remote.json";
 export function useRemoteList(forum: string) {
   const [data, setData] = React.useState<PostList[]>([]);
   const [cursor, setCursor] = React.useState<number>();

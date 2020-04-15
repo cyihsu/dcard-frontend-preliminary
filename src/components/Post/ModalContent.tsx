@@ -4,7 +4,6 @@ import React from "react";
 import { Post } from "../../types/Post";
 import { ModalInner } from "./ModalStyles";
 import {
-  ListExcerpt,
   ListHeader,
   ListForumName,
   ListEntity,
@@ -36,9 +35,6 @@ const ModalContent: React.FC<{ content: Post }> = ({ content }) => {
       </ListHeader>
       <ListMain>
         <ListTitle>{content.title}</ListTitle>
-        <ListExcerpt>
-          <span>{content.excerpt}</span>
-        </ListExcerpt>
       </ListMain>
     </ModalInner>
   );

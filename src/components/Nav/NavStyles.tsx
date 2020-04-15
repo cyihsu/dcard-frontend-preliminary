@@ -18,6 +18,11 @@ export const NavWrapper = (changeColor: boolean) =>
       padding: "1.1rem",
       filter: changeColor ? "var(--svg-white)" : "var(--svg-colored)",
     },
+    h2: {
+      display: "inline-block",
+      height: "100%",
+      maxHeight: "64px",
+    },
     "@media (max-width: 1000px)": {
       backgroundColor: "var(--dcard-corp-color)",
       zIndex: 10,
