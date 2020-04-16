@@ -20,6 +20,7 @@ const ListElement: React.FC<{
   content: PostList;
 }> = ({ content }) => {
   const { state, dispatch } = React.useContext(UIContext);
+
   const togglePost = () => {
     if (!state.toggleModal) {
       dispatch({

@@ -4,7 +4,9 @@ import { ModalInner } from "./ModalStyles";
 
 const ModalLoader = () => (
   <ModalInner>
-    <Loader height={120} />
+    <div style={{ padding: "5rem" }}>
+      <Loader height={120} />
+    </div>
   </ModalInner>
 );
 

@@ -1,9 +1,10 @@
 :root {
+  --font-color: #000;
   --global-outer-width: 1100px;
   --global-background-color: #f3f3f3;
   --dcard-corp-color: #006aa6;
-  --dcard-dark-color: #00324e;
   --dcard-link-color: #3397cf;
+  --nav-background: #006aa6;
   --pure-background: #fff;
   --hover-background: #f5f8fa;
   --loader-background: #fafafa;
@@ -14,6 +15,23 @@
     brightness(102%) contrast(102%);
 }
 
+:root .dark {
+  --font-color: #fff;
+  --global-outer-width: 1100px;
+  --global-background-color: #18191a;
+  --dcard-corp-color: #006aa6;
+  --dcard-link-color: #3397cf;
+  --nav-background: #242526;
+  --pure-background: #242526;
+  --hover-background: #3a3b3c;
+  --loader-background: #343536;
+
+  --svg-colored: invert(100%) sepia(100%) saturate(1%) hue-rotate(352deg)
+    brightness(102%) contrast(102%);
+  --svg-white: invert(100%) sepia(100%) saturate(1%) hue-rotate(352deg)
+    brightness(102%) contrast(102%);
+}
+
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -21,6 +39,16 @@ html {
 
 main {
   display: block;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  color: var(--font-color);
 }
 
 h1 {
@@ -61,7 +89,7 @@ body {
   font-family: Roboto, Helvetica Neue, Helvetica, Arial, PingFang TC, 黑體-繁,
     Heiti TC, 蘋果儷中黑, Apple LiGothic Medium, 微軟正黑體, Microsoft JhengHei,
     sans-serif;
-  overflow: hidden;
+  overflow: overlay;
   margin: 0;
   width: 100%;
   font-size: 14px;
@@ -106,4 +134,17 @@ a {
 
 html {
   overflow: -moz-scrollbars-none;
+}
+
+body::-webkit-scrollbar {
+  width: 0.7em;
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #c0392b;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }

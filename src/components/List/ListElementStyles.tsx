@@ -40,6 +40,7 @@ export const ListElementInnerStyle = styled.article`
 `;
 
 export const ListForumName = styled.div`
+  display: inline-block;
   border-radius: 12px;
   padding: 0.2rem 0.4rem;
   background-color: var(--dcard-corp-color);
@@ -47,7 +48,7 @@ export const ListForumName = styled.div`
   cursor: pointer;
 `;
 
-export const ListEntity = styled.div`
+export const ListEntity = styled.span`
   border-radius: 12px;
 `;
 
@@ -58,7 +59,7 @@ export const ListHeader = styled.div`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  div:not(:first-of-type)::before {
+  span::before {
     content: "・";
     margin-left: 0.1rem;
   }

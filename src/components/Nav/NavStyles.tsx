@@ -2,7 +2,7 @@ import { css } from "@emotion/core";
 
 export const NavWrapper = (changeColor: boolean) =>
   css({
-    backgroundColor: changeColor ? "transparent" : "var(--dcard-corp-color)",
+    backgroundColor: changeColor ? "transparent" : "var(--nav-background)",
     height: "64px",
     top: 0,
     width: "100%",
@@ -17,13 +17,10 @@ export const NavWrapper = (changeColor: boolean) =>
       objectFit: "cover",
       padding: "1.1rem",
       filter: changeColor ? "var(--svg-white)" : "var(--svg-colored)",
-      ":hover": {
-        transform: "scale(1.1)",
-      },
-      transition: "transform 300ms ease-in",
     },
+    willChange: "background-color, filter",
     "@media (max-width: 1000px)": {
-      backgroundColor: "var(--dcard-corp-color)",
+      backgroundColor: "var(--nav-background)",
       zIndex: 10,
       img: {
         filter: "var(--svg-colored)",
@@ -34,7 +31,7 @@ export const NavWrapper = (changeColor: boolean) =>
 export const NavInnerWrapper = css({
   width: "1100px",
   display: "flex",
-  alignItems: "flex-start",
+  justifyContent: "space-between",
   "@media (max-width: 1000px)": {
     width: "100%",
   },

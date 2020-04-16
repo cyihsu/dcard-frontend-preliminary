@@ -15,6 +15,26 @@ export interface MediaMeta {
   height: number;
 }
 
+export interface MediaDetail {
+  id: string;
+  name: string;
+  width: number;
+  height: number;
+  size: number;
+  url: string; // originalSize
+  type: string;
+  uploadedAt: string;
+  links: any;
+}
+
+export interface MediaObject {
+  width: number;
+  height: number;
+  size: number;
+  type: string;
+  url: string;
+}
+
 export interface Reaction {
   id: string;
   count: number;

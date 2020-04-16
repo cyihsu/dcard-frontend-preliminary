@@ -19,21 +19,26 @@ const Reactions: React.FC<{
   return (
     <React.Fragment>
       <ReactionListWrap>
-        {reactions.map(
-          (reaction, index) =>
-            index < 3 && (
+        {reactions.map((reaction, index) => {
+          if (index < 3) {
+            const tmpReaction = reactionTypes.get(reaction.id);
+            return (
               <div key={`tooltip-${id}-${reaction.id}`}>
                 <ReactionWrap
                   data-for={`tooltip-${id}-${reaction.id}`}
-                  data-tip={`${reactionTypes.get(reaction.id)?.name} ${
-                    reaction.count
-                  }`}
+                  data-tip={`${tmpReaction?.name} ${reaction.count}`}
                 >
-                  <ReactionsElement src={reactionTypes.get(reaction.id)?.url} />
+                  <ReactionsElement
+                    src={tmpReaction?.url}
+                    alt={tmpReaction?.name}
+                  />
                 </ReactionWrap>
               </div>
-            )
-        )}
+            );
+          } else {
+            return <div key={`tooltip-${id}-${reaction.id}`} />;
+          }
+        })}
       </ReactionListWrap>
     </React.Fragment>
   );

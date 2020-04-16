@@ -4,13 +4,16 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import InfiniteLoader from "react-window-infinite-loader";
 
 import ListElements from "./ListElements";
-import { UIContext } from "../../contexts/UIContext";
 import ListLoader from "./ListLoader";
 import { ListFrameWrapper } from "./ListElementStyles";
 
-function ListFrame({ data, hasNextPage, isLoadingMore, loadMore }: any) {
-  const { state, dispatch } = React.useContext(UIContext);
-
+function ListFrame({
+  data,
+  hasNextPage,
+  isLoadingMore,
+  loadMore,
+  handleScroll,
+}: any) {
   const itemCount = hasNextPage ? data.length + 1 : data.length;
   const loadMoreItems = isLoadingMore ? () => {} : loadMore;
   const isItemLoaded = (index: number) => !hasNextPage || index < data.length;
@@ -25,16 +28,6 @@ function ListFrame({ data, hasNextPage, isLoadingMore, loadMore }: any) {
       {data[index] ? <ListElements content={data[index]} /> : <ListLoader />}
     </div>
   );
-
-  const handleScroll = ({ scrollOffset }: any) => {
-    // Reduce Reducer Calls
-    // prettier-ignore
-    if (state.listScrolled !== (scrollOffset > 0)) {
-      dispatch({
-        type: scrollOffset > 0 ? "USER_NOT_AT_TOP" : "USER_AT_TOP",
-      });
-    }
-  };
 
   return (
     <ListFrameWrapper>
