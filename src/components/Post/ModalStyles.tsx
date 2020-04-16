@@ -98,13 +98,6 @@ export const ModalFooterItem = styled.div`
     padding-left: 1rem;
   }
 `;
-export const MockLogo = styled.div`
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  background-color: var(--dcard-corp-color);
-  display: inline-block;
-`;
 
 export const ModalUserIdentity = styled.div`
   display: flex;

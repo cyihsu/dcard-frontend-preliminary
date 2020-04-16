@@ -8,7 +8,6 @@ import {
   ModalInner,
   ModalHeader,
   ModalHeaderItem,
-  MockLogo,
   ModalUserIdentity,
   ModalFooter,
   ModalContentWrap,
@@ -22,6 +21,7 @@ import { contentPreprocess } from "../../utils/contentPreprocess";
 import Reactions from "../Reactions/Reactions";
 import ListForumLabel from "../List/ListForumLabel";
 import ModalContentMedia from "./ModalContentMedia";
+import Avatar from "../Avatar";
 
 const ModalContent: React.FC<{ content: Post; handleClick: any }> = ({
   content,
@@ -33,7 +33,10 @@ const ModalContent: React.FC<{ content: Post; handleClick: any }> = ({
       <ModalInner>
         <ModalHeader>
           <ModalHeaderItem>
-            <MockLogo />
+            <Avatar
+              dept={content.anonymousDepartment ? false : content.department[0]}
+              gender={content.gender}
+            />
             <ModalUserIdentity>
               <span style={{ fontSize: "16px" }}>
                 {content.school ? content.school : "匿名"}
@@ -122,7 +125,7 @@ const ModalContent: React.FC<{ content: Post; handleClick: any }> = ({
         </ModalFooter>
       </ModalInner>
     ),
-    [content]
+    [content, handleClick]
   );
 };
 

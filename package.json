@@ -1,5 +1,5 @@
 {
-  "name": "dcard-frontend-prelimary",
+  "name": "dcard-frontend-Preliminary",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -33,8 +33,7 @@
   "scripts": {
     "analyze": "react-scripts build && source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
-    "test": "react-scripts test"
+    "build": "GENERATE_SOURCEMAP=false react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"

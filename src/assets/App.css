@@ -9,6 +9,9 @@
   --hover-background: #f5f8fa;
   --loader-background: #fafafa;
 
+  --avatar-F: #cb3a6b;
+  --avatar-M: #006ea5;
+
   --svg-white: invert(21%) sepia(68%) saturate(3161%) hue-rotate(185deg)
     brightness(98%) contrast(102%);
   --svg-colored: invert(100%) sepia(100%) saturate(1%) hue-rotate(352deg)
@@ -25,6 +28,9 @@
   --pure-background: #242526;
   --hover-background: #3a3b3c;
   --loader-background: #343536;
+
+  --avatar-f: #cb3a6b;
+  --avatar-m: #006ea5;
 
   --svg-colored: invert(100%) sepia(100%) saturate(1%) hue-rotate(352deg)
     brightness(102%) contrast(102%);
