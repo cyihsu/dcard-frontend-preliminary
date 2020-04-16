@@ -137,8 +137,8 @@ a {
   padding: 0.5rem !important;
 }
 
-html {
-  overflow: -moz-scrollbars-none;
+* {
+  scrollbar-width: none;
 }
 
 body::-webkit-scrollbar {
