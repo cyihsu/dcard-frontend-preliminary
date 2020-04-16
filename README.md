@@ -1,5 +1,6 @@
 # Dcard Frontend Preliminary
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![image](picture or gif url)
 
 ## Preview
 See it in action on [now.sh](https://dcard-test.now.sh/).
@@ -31,13 +32,39 @@ Inspired by [A Pinterest Progressive Web App Performance Case Study](https://med
 This project uses `React Context API` to achieve `Redux-like` reducer and dispatcher operations, but less bloated bundled size
 
 ### Virtualized Post List
-This project implemented the post-list component using `react-window` to achieve a faster user expericence, as the Chrome Performance Monitor, It took less than **4.2MB JS heap size**, **350 DOM nodes** on initial renderer.
+This project implemented the post-list component using `react-window` to achieve a faster user expericence, as the Chrome Performance Monitor, It took less than **4.2MB JS heap size**, **350 DOM nodes** on initial renderer, and of course, it's **responsive**
 
 ### Polyfill-less Bundle Script
 Inspired by Instagram's [Making instagram.com faster: Code size and execution optimizations](https://instagram-engineering.com/making-instagram-com-faster-code-size-and-execution-optimizations-part-4-57668be796a8), this project uses `ES2017` as Typescript transpile target, since nearly 56% of user's browser supports `ES2017+` syntax. As a result, this shrinks 15% of source-mapped bundle size, and gained 20% of runtime performance (from Google Chrome Audit's Result, 83% -> 100% Performance Index)
 
 ### Rerender-less
 As using `@welldone-software/why-did-you-render`'s debug tool, this project would not trigger excessive re-render since all rerender-expensive large components has been memoized by `React.useMemo` hooks, and did not applied to too many components to avoid too many shallow compares, which may lead to a slower render speed, and for most case, this project may run at 60fps on most devices.
+
+### Dark Mode
+Since I usually worked at midnight, so I implemented a dark-mode feature by css variables.
+
+### Decoupled
+I enforced a strict folder naming policy, as you can see
+```
+src
+├── assets
+├── components
+├── constants
+├── contexts
+├── hooks
+├── types
+└── utils
+```
+all asynchronous operations will be done at hooks, and there's no data stored on context to avoid excessive re-renders, most components are **stateless**, this resulted in a better maintainability. 
+
+### Nearly all Dcard Post Reading Compatibility
+Try
+```
+/f/:forum
+/f/:forum/p/:postID
+/p/:postID
+```
+And almost all media assets can be correctly rendered (Some is not implemented due to API's CORS' policy)
 
 ## Available Scripts
 
