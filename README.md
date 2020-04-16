@@ -38,7 +38,7 @@ This project implemented the post-list component using `react-window` to achieve
 Inspired by Instagram's [Making instagram.com faster: Code size and execution optimizations](https://instagram-engineering.com/making-instagram-com-faster-code-size-and-execution-optimizations-part-4-57668be796a8), this project uses `ES2017` as Typescript transpile target, since nearly 56% of user's browser supports `ES2017+` syntax. As a result, this shrinks 15% of source-mapped bundle size, and gained 20% of runtime performance (from Google Chrome Audit's Result, 83% -> 100% on Performance Index)
 
 ### Rerender-less
-As using `@welldone-software/why-did-you-render`'s debug tool, this project would not trigger excessive re-render since all render-expensive large components has been memoized by `React.useMemo` hooks, and did not applied to too many components to avoid too many shallow comparisons, which may lead to a slower render speed, and for most case, this project may run at 60fps on most devices.
+Analyzed by `@welldone-software/why-did-you-render`, this project would not trigger excessive re-render since all render-expensive large components has been memoized by `React.useMemo` hooks, and did not applied to too many components to avoid too many shallow comparisons, which may lead to a slower render speed, and for most case, this project may run at 60fps on most devices.
 
 ### Dark Mode
 Since I usually worked at midnight, so I implemented a dark-mode feature by css variables.
