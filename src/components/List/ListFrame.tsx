@@ -1,17 +1,63 @@
 import React from "react";
-import styled from "styled-components";
+import { FixedSizeList as List } from "react-window";
+import AutoSizer from "react-virtualized-auto-sizer";
+import InfiniteLoader from "react-window-infinite-loader";
+
 import ListElements from "./ListElements";
-import latest from "../../mocks/latest.json";
+import ListLoader from "./ListLoader";
+import { ListFrameWrapper } from "./ListElementStyles";
 
-const ListFrame = styled.div`
-  padding-top: 20px;
-  min-height: calc(100% - 80px);
-  margin: 0px 12px;
-  border-radius: 4px 4px 0px 0px;
-  background: rgb(255, 255, 255);
-  width: 728px;
-`;
+function ListFrame({
+  data,
+  hasNextPage,
+  isLoadingMore,
+  loadMore,
+  handleScroll,
+}: any) {
+  const itemCount = hasNextPage ? data.length + 1 : data.length;
+  const loadMoreItems = isLoadingMore ? () => {} : loadMore;
+  const isItemLoaded = (index: number) => !hasNextPage || index < data.length;
 
-export default function () {
-  return <ListFrame>{latest.map()}</ListFrame>;
+  const virtualRow = ({ index, style }: any) => (
+    <div
+      style={{
+        ...style,
+        top: `${parseFloat(style.top) + 90}px`,
+      }}
+    >
+      {data[index] ? <ListElements content={data[index]} /> : <ListLoader />}
+    </div>
+  );
+
+  return (
+    <ListFrameWrapper>
+      <AutoSizer>
+        {({ height, width }) => (
+          <InfiniteLoader
+            isItemLoaded={isItemLoaded}
+            itemCount={itemCount}
+            loadMoreItems={loadMoreItems}
+            // If threshold too high, might trigger duplicated request on initial parse
+            threshold={8}
+          >
+            {({ onItemsRendered, ref }) => (
+              <List
+                itemCount={itemCount}
+                itemSize={180}
+                height={height}
+                width={width}
+                ref={ref}
+                onItemsRendered={onItemsRendered}
+                onScroll={handleScroll}
+              >
+                {virtualRow}
+              </List>
+            )}
+          </InfiniteLoader>
+        )}
+      </AutoSizer>
+    </ListFrameWrapper>
+  );
 }
+
+export default ListFrame;

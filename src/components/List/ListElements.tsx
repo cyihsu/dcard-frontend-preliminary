@@ -1,17 +1,69 @@
 import React from "react";
-import styled from "styled-components";
+import { useParams, useHistory } from "react-router-dom";
+import { PostList } from "../../types/PostList";
+import { dateStringToChinese } from "../../utils/dateString";
+import {
+  ListElementWrapperStyle,
+  ListElementInnerStyle,
+  ListHeader,
+  ListEntity,
+  ListMain,
+  ListTitle,
+  ListExcerpt,
+  ListFooter,
+  ListThumb,
+} from "./ListElementStyles";
+import ListForumLabel from "./ListForumLabel";
+import Reactions from "../Reactions";
 
-const ListElementStyle = styled.article`
-  display: block;
-  margin: 0px 40px;
-  padding: 20px;
-  border-bottom: 1px solid rgb(233, 233, 233);
-  transition: 300ms all;
-  :hover {
-    transform: scale(1.05);
-  }
-`;
+const ListElement: React.FC<{
+  content: PostList;
+}> = ({ content }) => {
+  const history = useHistory();
+  const { forum } = useParams();
+  const togglePost = () => {
+    history.push(`${forum ? "/f/" + forum : ""}/p/${content.id.toString()}`);
+  };
 
-export default function () {
-  return <ListElementStyle>sds</ListElementStyle>;
-}
+  return (
+    <ListElementWrapperStyle>
+      <ListElementInnerStyle>
+        <ListHeader>
+          <ListForumLabel
+            id={content.id}
+            forumName={content.forumName}
+            forumAlias={content.forumAlias}
+          />
+          <ListEntity>{content.school ? content.school : "匿名"}</ListEntity>
+          <ListEntity>
+            {content && dateStringToChinese(content.createdAt)}
+          </ListEntity>
+        </ListHeader>
+        <ListMain onClick={togglePost}>
+          <ListTitle>{content.title}</ListTitle>
+          <ListExcerpt>
+            <span>{content.excerpt}</span>
+          </ListExcerpt>
+        </ListMain>
+        <ListFooter>
+          <Reactions id={content.id} reactions={content.reactions} />
+          <ListEntity>{content.likeCount}</ListEntity>
+          <ListEntity style={{ paddingLeft: "1rem" }}>
+            回應 {content.commentCount}
+          </ListEntity>
+        </ListFooter>
+        {content.media[0] && (
+          <ListThumb
+            src={content.media[0].url}
+            alt=""
+            width="84px"
+            height="84px"
+            loading="lazy"
+          />
+        )}
+      </ListElementInnerStyle>
+    </ListElementWrapperStyle>
+  );
+};
+
+export default ListElement;

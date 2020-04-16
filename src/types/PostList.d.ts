@@ -34,4 +34,5 @@ export interface PostList {
   media: Media[];
   reportReasonText: string;
   postAvatar: string;
+  [Symbol.iterator](): Iterator;
 }

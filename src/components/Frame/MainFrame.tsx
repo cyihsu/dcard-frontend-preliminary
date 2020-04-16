@@ -1,10 +1,9 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const MainFrameStyle = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 80px;
 `;
 
 const MainFrame: React.FC<{
