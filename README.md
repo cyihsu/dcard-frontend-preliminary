@@ -64,7 +64,7 @@ Try
 /f/:forum/p/:postID
 /p/:postID
 ```
-And almost all media assets can be correctly rendered (Some is not implemented due to API's CORS' policy)
+And almost all media assets can be correctly rendered (Some did not implemented due to API's CORS' policy)
 
 ## Benchmarks
 ![image](https://github.com/cyihsu/dcard-frontend-preliminary/blob/master/benchmark.png)
