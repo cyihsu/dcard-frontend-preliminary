@@ -1,4 +1,5 @@
 import { css } from "@emotion/core";
+import styled from "@emotion/styled";
 
 export const NavWrapper = (changeColor: boolean) =>
   css({
@@ -36,3 +37,12 @@ export const NavInnerWrapper = css({
     width: "100%",
   },
 });
+
+export const NavForumName = styled.div`
+  display: inline-block;
+  border-radius: 12px;
+  padding: 12px 24px;
+  background-color: var(--dcard-corp-color);
+  color: white;
+  cursor: pointer;
+`;

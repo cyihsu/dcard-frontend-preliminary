@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams, useHistory } from "react-router-dom";
 import { PostList } from "../../types/PostList";
 import { dateStringToChinese } from "../../utils/dateString";
 import {
@@ -12,22 +13,16 @@ import {
   ListFooter,
   ListThumb,
 } from "./ListElementStyles";
-import { UIContext } from "../../contexts/UIContext";
 import ListForumLabel from "./ListForumLabel";
 import Reactions from "../Reactions";
 
 const ListElement: React.FC<{
   content: PostList;
 }> = ({ content }) => {
-  const { state, dispatch } = React.useContext(UIContext);
-
+  const history = useHistory();
+  const { forum } = useParams();
   const togglePost = () => {
-    if (!state.toggleModal) {
-      dispatch({
-        type: "OPEN_MODAL",
-        payload: { attr: "post", value: content.id },
-      });
-    }
+    history.push(`${forum ? "/f/" + forum : ""}/p/${content.id.toString()}`);
   };
 
   return (

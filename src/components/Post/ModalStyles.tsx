@@ -68,8 +68,7 @@ export const ModalInner = styled.article`
 export const ModalHeader = styled.div`
   width: 100%;
   display: flex;
-  padding: 0px;
-  padding-top: 22px;
+  padding: 22px 0px;
   justify-content: space-between;
 `;
 
@@ -118,21 +117,35 @@ export const ModalContentWrap = styled.div`
   min-height: calc(80vh - 122px);
 `;
 
-export const ModalTitle = styled.div`
-  padding: 16px 0px;
-`;
+export const ModalTitle = styled.div``;
 
 export const ModalTopics = styled.ul`
   display: flex;
   li {
+    cursor: pointer;
     padding: 8px 16px;
     background: rgb(239, 239, 239);
     margin: 4px;
     border-radius: 12px;
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
   }
 `;
 
 export const ModalTopicsWrapper = styled.div`
   padding-top: 10px;
   display: inline-block;
+`;
+
+export const toggleTitle = (inView: boolean) =>
+  css({
+    transform: inView ? "transformY(-175%)" : "transformY(0%)",
+    visibility: inView ? "visible" : "hidden",
+    transition: "all 1.0s cubic-bezier(0.19, 1, 0.22, 1)",
+  });
+
+export const ModalImage = styled.img`
+  max-height: 50vh;
 `;

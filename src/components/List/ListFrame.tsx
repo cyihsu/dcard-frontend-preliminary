@@ -60,6 +60,4 @@ function ListFrame({
   );
 }
 
-ListFrame.whyDidYouRender = true;
-
 export default ListFrame;

@@ -1,4 +1,6 @@
 import React from "react";
+import ReactTooltip from "react-tooltip";
+
 import { Reaction, ReactionTypes } from "../../types/CommonTypes";
 import {
   ReactionWrap,
@@ -15,7 +17,8 @@ reactionTypesRaw.forEach((reaction: ReactionTypes) =>
 const Reactions: React.FC<{
   id: number;
   reactions: Reaction[];
-}> = ({ id, reactions }) => {
+  isModal?: boolean;
+}> = ({ id, reactions, isModal }) => {
   return (
     <React.Fragment>
       <ReactionListWrap>
@@ -33,6 +36,12 @@ const Reactions: React.FC<{
                     alt={tmpReaction?.name}
                   />
                 </ReactionWrap>
+                {isModal && (
+                  <ReactTooltip
+                    id={`tooltip-${id}-${reaction.id}`}
+                    class="tooltip"
+                  />
+                )}
               </div>
             );
           } else {

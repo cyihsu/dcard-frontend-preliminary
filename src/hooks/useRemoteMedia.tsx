@@ -1,21 +1,20 @@
 import React from "react";
 import { jsonFetcher } from "../utils/fetch";
-import REMOTE_CONSTS from "../constants/remote.json";
 import { MediaDetail } from "../types/CommonTypes";
 
-export function useRemoteMedia(mediaID?: string) {
+export function useRemoteMedia(mediaLink?: string) {
   const [data, setData] = React.useState<MediaDetail>();
 
   React.useEffect(() => {
-    if (mediaID?.length) {
-      const URL = REMOTE_CONSTS.POST_ENDPOINT + mediaID;
-      jsonFetcher(URL).then((result) => {
-        setData(result.json());
+    if (mediaLink?.length) {
+      const URL = mediaLink;
+      jsonFetcher(URL).then(async (result) => {
+        await setData(result);
       });
     } else {
       setData(undefined);
     }
-  }, [mediaID]);
+  }, [mediaLink]);
 
   return data;
 }

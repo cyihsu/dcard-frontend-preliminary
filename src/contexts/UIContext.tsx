@@ -44,7 +44,7 @@ export const UIContextProvider: React.FC = (Props) => {
 
 const UIReducer: React.Reducer<UIStates, UIActions> = (state, action) => {
   if (process.env.NODE_ENV === "development") {
-    console.log(state, action);
+    //console.log(state, action);
   }
   switch (action.type) {
     case "USER_NOT_AT_TOP":

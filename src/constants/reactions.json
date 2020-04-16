@@ -6,9 +6,7 @@
     "position": 1,
     "startAt": "2018-01-01T00:00:00.000Z",
     "endAt": null,
-    "rules": {
-      "isGeneral": true
-    },
+    "rules": { "isGeneral": true },
     "createdAt": "2018-10-01T07:19:03.922Z",
     "updatedAt": "2018-10-16T05:04:23.156Z",
     "deletedAt": null,
@@ -22,9 +20,7 @@
     "position": 3,
     "startAt": "2018-01-01T00:00:00.000Z",
     "endAt": null,
-    "rules": {
-      "isGeneral": true
-    },
+    "rules": { "isGeneral": true },
     "createdAt": "2018-10-01T07:19:03.922Z",
     "updatedAt": "2018-10-15T10:27:51.400Z",
     "deletedAt": null,
@@ -38,9 +34,7 @@
     "position": 5,
     "startAt": "2018-01-01T00:00:00.000Z",
     "endAt": null,
-    "rules": {
-      "isGeneral": true
-    },
+    "rules": { "isGeneral": true },
     "createdAt": "2018-10-01T07:19:03.922Z",
     "updatedAt": "2018-10-15T10:28:04.895Z",
     "deletedAt": null,
@@ -54,9 +48,7 @@
     "position": 7,
     "startAt": "2018-01-01T00:00:00.000Z",
     "endAt": null,
-    "rules": {
-      "isGeneral": true
-    },
+    "rules": { "isGeneral": true },
     "createdAt": "2018-10-01T07:19:03.922Z",
     "updatedAt": "2018-10-16T07:43:44.538Z",
     "deletedAt": null,
@@ -70,9 +62,7 @@
     "position": 9,
     "startAt": "2018-01-01T00:00:00.000Z",
     "endAt": null,
-    "rules": {
-      "isGeneral": true
-    },
+    "rules": { "isGeneral": true },
     "createdAt": "2018-10-01T07:19:03.922Z",
     "updatedAt": "2018-10-15T10:28:41.084Z",
     "deletedAt": null,
@@ -86,9 +76,7 @@
     "position": 11,
     "startAt": "2018-01-01T00:00:00.000Z",
     "endAt": null,
-    "rules": {
-      "isGeneral": true
-    },
+    "rules": { "isGeneral": true },
     "createdAt": "2018-09-17T06:19:50.062Z",
     "updatedAt": "2018-10-20T06:52:20.466Z",
     "deletedAt": null,
@@ -102,9 +90,7 @@
     "position": 100,
     "startAt": "2018-10-16T04:35:50.000Z",
     "endAt": "2018-10-16T04:57:32.000Z",
-    "rules": {
-      "isGeneral": false
-    },
+    "rules": { "isGeneral": false },
     "createdAt": "2018-10-16T04:34:27.803Z",
     "updatedAt": "2018-10-16T04:54:57.950Z",
     "deletedAt": null,

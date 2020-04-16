@@ -1,15 +1,18 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { ListForumName } from "./ListElementStyles";
+import { UIContext } from "../../contexts/UIContext";
 
 const ListForumLabel: React.FC<{
   id: number;
   forumName: string;
   forumAlias: string;
 }> = ({ id, forumName, forumAlias }) => {
+  const { dispatch } = React.useContext(UIContext);
   const history = useHistory();
   const toggleForum = () => {
     history.push(`/f/${forumAlias}`);
+    dispatch({ type: "CLOSE_MODAL" });
   };
 
   return (

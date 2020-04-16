@@ -26,6 +26,31 @@ const GlobalWrapper = styled.div`
   height: 100vh;
 `;
 
+function Post() {
+  const { state, dispatch } = React.useContext(UIContext);
+  const { post } = useParams();
+  const currentPost = useRemotePost(state.currentPost);
+
+  React.useEffect(() => {
+    if (post && parseInt(post, 10)) {
+      dispatch({
+        type: "OPEN_MODAL",
+        payload: { attr: "post", value: parseInt(post, 10) },
+      });
+    } else {
+      dispatch({ type: "CLOSE_MODAL" });
+    }
+  }, [post, dispatch]);
+  return React.useMemo(
+    () => (
+      <Suspense fallback={<div />}>
+        <Modal data={currentPost || undefined} />
+      </Suspense>
+    ),
+    [currentPost]
+  );
+}
+
 function Forum() {
   const { dispatch } = React.useContext(UIContext);
   const { forum } = useParams();
@@ -35,6 +60,7 @@ function Forum() {
 
   const handleScroll = ({ scrollOffset }: any) => {
     // Reduce Reducer Calls
+    // prettier-ignore
     dispatch({
       type: scrollOffset > 0 ? "USER_NOT_AT_TOP" : "USER_AT_TOP",
     });
@@ -65,7 +91,6 @@ function Forum() {
 function App() {
   const { state } = React.useContext(UIContext);
   const [isDark, setDark] = React.useState<boolean>(false);
-  const Post = useRemotePost(state.currentPost);
 
   const toggleDark = () => setDark((s) => !s);
 
@@ -77,14 +102,21 @@ function App() {
           toggleDark={toggleDark}
         />
       </Suspense>
-      <Suspense fallback={<div />}>
-        <Modal data={Post || undefined} />
-      </Suspense>
       <Switch>
         <Route exact path="/">
+          <Post />
           <Forum />
         </Route>
-        <Route path="/f/:forum">
+        <Route exact path="/f/:forum">
+          <Post />
+          <Forum />
+        </Route>
+        <Route exact path="/p/:post">
+          <Post />
+          <Forum />
+        </Route>
+        <Route exact path="/f/:forum/p/:post">
+          <Post />
           <Forum />
         </Route>
       </Switch>

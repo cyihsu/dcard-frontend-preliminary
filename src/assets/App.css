@@ -129,7 +129,6 @@ a {
   z-index: 30;
   font-size: 16px !important;
   padding: 0.5rem !important;
-  background-color: var(--dcard-dark-color) !important;
 }
 
 html {
