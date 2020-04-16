@@ -34,7 +34,7 @@ This project uses `React Context API` to achieve `Redux-like` reducer and dispat
 ### Virtualized Post List
 This project implemented the post-list component using `react-window` to achieve a faster user expericence, as the Chrome Performance Monitor, It took less than **4.2MB JS heap size**, **350 DOM nodes** on initial renderer, and of course, it's **responsive**.
 
-### Polyfill-less Bundle Script
+### Polyfill-less Bundling Script
 Inspired by Instagram's [Making instagram.com faster: Code size and execution optimizations](https://instagram-engineering.com/making-instagram-com-faster-code-size-and-execution-optimizations-part-4-57668be796a8), this project uses `ES2017` as Typescript transpile target, since nearly 56% of user's browser supports `ES2017+` syntax. As a result, this shrinks 15% of source-mapped bundle size, and gained 20% of runtime performance (from Google Chrome Audit's Result, 83% -> 100% on Performance Index)
 
 ### Rerender-less
