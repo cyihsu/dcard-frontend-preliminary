@@ -1,6 +1,6 @@
 # Dcard Frontend Preliminary
+![image](https://github.com/cyihsu/dcard-frontend-preliminary/blob/master/screenshot.png)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-![image](picture or gif url)
 
 ## Preview
 See it in action on [now.sh](https://dcard-test.now.sh/).
