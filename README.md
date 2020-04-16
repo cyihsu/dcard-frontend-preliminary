@@ -14,7 +14,7 @@ $ yarn install && yarn start
 
 ## Features
 ### Code Splitted and Build Cacheable Chunks
-As the result, can achieve faster page loading and easy to cache, since chunks have been splitted on its name, not integers.
+As the result, this approach can achieve faster page loading and easy to cache, since chunks have been splitted on its name, not variable integers.
 Inspired by [A Pinterest Progressive Web App Performance Case Study](https://medium.com/dev-channel/a-pinterest-progressive-web-app-performance-case-study-3bd6ed2e6154)
 ```
 59.03 KB (-45 B)  build/static/js/6.47d4bdd6.chunk.js
