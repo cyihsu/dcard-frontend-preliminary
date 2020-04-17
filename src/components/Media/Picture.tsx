@@ -17,7 +17,7 @@ export default function ({ origin }: any) {
     <div>
       <picture css={Picture}>
         {["webp, jpeg"].map((filetype) => {
-          const typeKey = (filetype === "jpeg" ? "." : "") + filetype;
+          const typeKey = filetype === "jpeg" ? "." + filetype : "";
           return (
             <source
               type={`image/${filetype}`}
