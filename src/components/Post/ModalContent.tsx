@@ -81,7 +81,6 @@ const ModalContent: React.FC<{ content: Post; handleClick: any }> = ({
                   <ModalContentMedia
                     key={`paragraph${content.id}-${index}`}
                     queryKey={paragraph}
-                    media={content.media || null}
                     mediaMeta={content.mediaMeta || null}
                   />
                 );
