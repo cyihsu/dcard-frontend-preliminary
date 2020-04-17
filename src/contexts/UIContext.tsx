@@ -1,4 +1,5 @@
 import React from "react";
+import { scrolledAction, modalAction } from "./Actions";
 
 interface UIActions {
   type: string;
@@ -45,31 +46,15 @@ export const UIContextProvider: React.FC = (Props) => {
 const UIReducer: React.Reducer<UIStates, UIActions> = (state, action) => {
   switch (action.type) {
     case "USER_NOT_AT_TOP":
-      return {
-        ...state,
-        listScrolled: true,
-      };
+      return scrolledAction(state, true);
     case "USER_AT_TOP":
-      return {
-        ...state,
-        listScrolled: false,
-      };
+      return scrolledAction(state, false);
     case "CLOSE_MODAL":
-      return {
-        ...state,
-        toggleModal: false,
-        currentPost: 0,
-      };
+      return modalAction(state, 0);
     case "OPEN_MODAL":
-      if (action.payload !== undefined) {
-        return {
-          ...state,
-          toggleModal: true,
-          currentPost: parseInt(action.payload.value as string, 10),
-        };
-      } else {
-        return state;
-      }
+      return action.payload !== undefined
+        ? modalAction(state, parseInt(action.payload.value as string, 10))
+        : state;
     default:
       return state;
   }
