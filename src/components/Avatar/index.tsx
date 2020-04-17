@@ -20,28 +20,19 @@ const AvatarLogo = (color: string) =>
   });
 
 export default function Avatar({ dept, gender }: any) {
-  if (dept) {
-    if (gender === "D") {
-      return (
-        <span css={AvatarLogo(gender)}>
+  return (
+    <span css={AvatarLogo(gender)}>
+      {dept ? (
+        gender === "D" ? (
           <img src={d} alt="Dcard Staff" />
-        </span>
-      );
-    } else {
-      return <span css={AvatarLogo(gender)}>{dept[0].toUpperCase()}</span>;
-    }
-  } else {
-    if (gender === "M")
-      return (
-        <span css={AvatarLogo(gender)}>
-          <img src={m} alt="male" />
-        </span>
-      );
-    else
-      return (
-        <span css={AvatarLogo(gender)}>
-          <img src={f} alt="female" />
-        </span>
-      );
-  }
+        ) : (
+          dept[0].toUpperCase()
+        )
+      ) : gender === "M" ? (
+        <img src={m} alt="male" />
+      ) : (
+        <img src={f} alt="female" />
+      )}
+    </span>
+  );
 }

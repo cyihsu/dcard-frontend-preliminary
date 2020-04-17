@@ -103,22 +103,14 @@ function App() {
         />
       </Suspense>
       <Switch>
-        <Route exact path="/">
-          <Post />
-          <Forum />
-        </Route>
-        <Route exact path="/f/:forum">
-          <Post />
-          <Forum />
-        </Route>
-        <Route exact path="/p/:post">
-          <Post />
-          <Forum />
-        </Route>
-        <Route exact path="/f/:forum/p/:post">
-          <Post />
-          <Forum />
-        </Route>
+        {["/", "/f/:forum", "/p/:post", "/f/:forum/p/:post"].map(
+          (routePath) => (
+            <Route exact path={routePath}>
+              <Post />
+              <Forum />
+            </Route>
+          )
+        )}
       </Switch>
     </GlobalWrapper>
   );

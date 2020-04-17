@@ -16,14 +16,17 @@ export default function ({ origin }: any) {
   return source ? (
     <div>
       <picture css={Picture}>
-        <source
-          type="image/webp"
-          srcSet={`${source.links["160.webp"].url} 120w,${source.links["320.webp"].url} 240w,${source.links["full.webp"].url} 440w`}
-        />
-        <source
-          type="image/jpeg"
-          srcSet={`${source.links["160"].url} 120w,${source.links["320"].url} 240w,${source.links["full"].url} 440w`}
-        />
+        {["webp, jpeg"].map((filetype) => {
+          const typeKey = (filetype === "jpeg" ? "." : "") + filetype;
+          return (
+            <source
+              type={`image/${filetype}`}
+              srcSet={`${source.links[`160${typeKey}`].url} 120w,${
+                source.links[`320${typeKey}`].url
+              } 240w,${source.links[`full${typeKey}`].url} 440w`}
+            />
+          );
+        })}
         <img src={source.url} alt={source.url} width="100%" loading="lazy" />
       </picture>
     </div>
