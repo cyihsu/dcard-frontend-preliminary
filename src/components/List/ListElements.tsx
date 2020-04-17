@@ -54,7 +54,7 @@ const ListElement: React.FC<{
         </ListFooter>
         {content.media[0] && (
           <ListThumb
-            src={content.media[0].url}
+            src={content.media[0].url.replace(/^http:\/\//i, "https://")}
             alt=""
             width="84px"
             height="84px"
