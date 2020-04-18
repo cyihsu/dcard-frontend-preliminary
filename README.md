@@ -17,15 +17,15 @@ $ yarn install && yarn start
 As the result, this approach can achieve faster page loading and easy to cache, since chunks have been splitted on its name, not variable integers.
 Inspired by [A Pinterest Progressive Web App Performance Case Study](https://medium.com/dev-channel/a-pinterest-progressive-web-app-performance-case-study-3bd6ed2e6154)
 ```
-59.03 KB (-45 B)  build/static/js/6.47d4bdd6.chunk.js
-8.41 KB (-42 B)   build/static/js/0.3b33d67a.chunk.js
-5.86 KB (-42 B)   build/static/js/7.ae3fe9a1.chunk.js
-5.11 KB (-40 B)   build/static/js/Post.e7bd09a6.chunk.js
-3.06 KB (-43 B)   build/static/js/List.7627ebd6.chunk.js
-2.33 KB (-40 B)   build/static/js/main.a47e898a.chunk.js
-1.2 KB (-42 B)    build/static/js/runtime-main.7893c2d5.js
-906 B (-44 B)     build/static/css/main.293add04.chunk.css
-795 B (-42 B)     build/static/js/Nav.d983b8de.chunk.js
+  59.04 KB  build/static/js/6.9fd6446c.chunk.js
+  8.41 KB   build/static/js/0.3b33d67a.chunk.js
+  5.86 KB   build/static/js/7.ae3fe9a1.chunk.js
+  5.11 KB   build/static/js/Post.6bd54917.chunk.js
+  3.09 KB   build/static/js/List.c09d1241.chunk.js
+  2.37 KB   build/static/js/main.96a75767.chunk.js
+  1.2 KB    build/static/js/runtime-main.dac6d0c8.js
+  906 B     build/static/css/main.293add04.chunk.css
+  796 B     build/static/js/Nav.799ce7b5.chunk.js
 ```
 
 ### Redux-free, Context based
