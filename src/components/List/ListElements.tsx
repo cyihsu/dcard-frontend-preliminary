@@ -52,9 +52,12 @@ const ListElement: React.FC<{
             回應 {content.commentCount}
           </ListEntity>
         </ListFooter>
-        {content.media[0] && (
+        {content.mediaMeta[0] && (
           <ListThumb
-            src={content.media[0].url.replace(/^http:\/\//i, "https://")}
+            src={content.mediaMeta[0].thumbnail.replace(
+              /^http:\/\//i,
+              "https://"
+            )}
             alt=""
             width="84px"
             height="84px"
