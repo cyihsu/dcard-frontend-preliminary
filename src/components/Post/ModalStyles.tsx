@@ -3,10 +3,10 @@ import styled from "@emotion/styled";
 
 export const fadeIn = keyframes`
   from {
-    transform: translate3d(-50%, 50%, 0);
+    transform: translate3d(0%, 50%, 0);
   }
   to {
-    transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(0%, 0%, 0);
   }
 `;
 
@@ -33,11 +33,6 @@ export const ModalFrame = (displayState: boolean) =>
     height: "90vh",
     width: "100%",
     maxWidth: "1000px",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
     borderRadius: "12px",
     zIndex: 20,
     opacity: displayState ? 1 : 0,
@@ -55,8 +50,7 @@ export const ModalInner = styled.article`
   height: 100%;
   width: 100%;
   display: flex;
-  padding-left: 60px;
-  padding-right: 60px;
+  padding: 0px 60px;
   flex-direction: column;
   overflow-wrap: break-word;
   white-space: pre-wrap;
@@ -142,3 +136,11 @@ export const toggleTitle = (inView: boolean) =>
 export const ModalImage = styled.img`
   max-height: 50vh;
 `;
+
+export const ModalWrapper = css({
+  display: "flex",
+  height: "100vh",
+  width: "100vw",
+  alignItems: "center",
+  justifyContent: "center",
+});

@@ -43,7 +43,7 @@ function ListFrame({
             {({ onItemsRendered, ref }) => (
               <List
                 itemCount={itemCount}
-                itemSize={180}
+                itemSize={width < 800 ? 170 : 180}
                 height={height}
                 width={width}
                 ref={ref}

@@ -4,7 +4,7 @@ import React from "react";
 import { Post } from "../../types/Post";
 import { UIContext } from "../../contexts/UIContext";
 import { useKeyPressed } from "../../hooks/useKeyPressed";
-import { ModalFrame, ModalBackground } from "./ModalStyles";
+import { ModalFrame, ModalBackground, ModalWrapper } from "./ModalStyles";
 import ModalContent from "./ModalContent";
 import ModalLoader from "./ModalLoader";
 import { useHistory, useParams } from "react-router";
@@ -26,12 +26,14 @@ const Modal: React.FC<{ data?: Post }> = ({ data }) => {
 
   return (
     <React.Fragment>
-      <div css={ModalFrame(state.toggleModal)}>
-        {data ? (
-          <ModalContent content={data} handleClick={handleClick} />
-        ) : (
-          <ModalLoader />
-        )}
+      <div css={ModalWrapper}>
+        <div css={ModalFrame(state.toggleModal)}>
+          {data ? (
+            <ModalContent content={data} handleClick={handleClick} />
+          ) : (
+            <ModalLoader />
+          )}
+        </div>
       </div>
       <div css={ModalBackground(state.toggleModal)} onClick={handleClick} />
     </React.Fragment>
