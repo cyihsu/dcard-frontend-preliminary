@@ -105,7 +105,7 @@ function App() {
       <Switch>
         {["/", "/f/:forum", "/p/:post", "/f/:forum/p/:post"].map(
           (routePath) => (
-            <Route exact path={routePath}>
+            <Route key={`route-${routePath}`} exact path={routePath}>
               <Post />
               <Forum />
             </Route>
