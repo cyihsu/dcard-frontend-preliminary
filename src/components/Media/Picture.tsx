@@ -12,7 +12,6 @@ const Picture = css({
 
 export default function ({ origin }: any) {
   const source = useRemoteMedia(origin);
-
   return source ? (
     <div>
       <picture css={Picture}>
@@ -20,10 +19,11 @@ export default function ({ origin }: any) {
           const typeKey = filetype === "jpeg" ? "." + filetype : "";
           return (
             <source
+              key={`${origin}`}
               type={`image/${filetype}`}
-              srcSet={`${source.links[`160${typeKey}`].url} 120w,${
-                source.links[`320${typeKey}`].url
-              } 240w,${source.links[`full${typeKey}`].url} 440w`}
+              srcSet={`${source.links[`160${typeKey}`].url} 120w, ${
+                source.links[`full${typeKey}`].url
+              } 440w`}
             />
           );
         })}

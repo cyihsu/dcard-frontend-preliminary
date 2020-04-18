@@ -92,7 +92,18 @@ function App() {
   const { state } = React.useContext(UIContext);
   const [isDark, setDark] = React.useState<boolean>(false);
 
-  const toggleDark = () => setDark((s) => !s);
+  const toggleDark = React.useCallback(() => setDark((s) => !s), []);
+
+  const routes = React.useMemo(
+    () =>
+      ["/", "/f/:forum", "/p/:post", "/f/:forum/p/:post"].map((routePath) => (
+        <Route exact path={routePath}>
+          <Post />
+          <Forum />
+        </Route>
+      )),
+    []
+  );
 
   return (
     <GlobalWrapper className={isDark ? "dark" : ""}>
@@ -102,16 +113,7 @@ function App() {
           toggleDark={toggleDark}
         />
       </Suspense>
-      <Switch>
-        {["/", "/f/:forum", "/p/:post", "/f/:forum/p/:post"].map(
-          (routePath) => (
-            <Route key={`route-${routePath}`} exact path={routePath}>
-              <Post />
-              <Forum />
-            </Route>
-          )
-        )}
-      </Switch>
+      <Switch>{routes}</Switch>
     </GlobalWrapper>
   );
 }
