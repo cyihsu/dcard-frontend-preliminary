@@ -4,7 +4,7 @@ import { useRemoteMedia } from "../../hooks/useRemoteMedia";
 
 const Picture = css({
   width: "auto",
-  maxWidth: "100%",
+  maxWidth: "90vw",
   maxHeight: "50vh",
   height: "auto",
   display: "inline-block",

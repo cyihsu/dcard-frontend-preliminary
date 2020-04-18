@@ -107,8 +107,8 @@ export const ModalContentWrap = styled.div`
 export const ModalTitle = styled.div``;
 
 export const ModalTopics = styled.ul`
-  display: flex;
   li {
+    display: inline-block;
     cursor: pointer;
     padding: 8px 16px;
     background: rgb(239, 239, 239);
@@ -135,6 +135,7 @@ export const toggleTitle = (inView: boolean) =>
 
 export const ModalImage = styled.img`
   max-height: 50vh;
+  max-width: 90vw;
 `;
 
 export const ModalWrapper = css({
@@ -144,3 +145,10 @@ export const ModalWrapper = css({
   alignItems: "center",
   justifyContent: "center",
 });
+
+export const ModalEntity = styled.span`
+  border-radius: 12px;
+  img {
+    filter: var(--svg-white);
+  }
+`;

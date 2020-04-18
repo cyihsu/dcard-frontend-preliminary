@@ -14,6 +14,7 @@ import {
   ModalTitle,
   ModalTopics,
   ModalTopicsWrapper,
+  ModalEntity,
 } from "./ModalStyles";
 import { ListEntity } from "../List/ListElementStyles";
 import { dateStringToChinese } from "../../utils/dateString";
@@ -50,14 +51,14 @@ const ModalContent: React.FC<{ content: Post; handleClick: any }> = ({
               )}
             </ModalUserIdentity>
           </ModalHeaderItem>
-          <ListEntity style={{ height: "20px", width: "20px" }}>
+          <ModalEntity style={{ height: "20px", width: "20px" }}>
             <img
               src={close}
               alt="close modal"
               onClick={handleClick}
               style={{ cursor: "pointer" }}
             />
-          </ListEntity>
+          </ModalEntity>
         </ModalHeader>
 
         <ModalContentWrap>
