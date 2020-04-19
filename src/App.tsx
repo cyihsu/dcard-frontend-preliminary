@@ -27,17 +27,19 @@ const GlobalWrapper = styled.div`
 `;
 
 function Post() {
-  const { dispatch } = React.useContext(UIContext);
+  const { state, dispatch } = React.useContext(UIContext);
   const { post } = useParams();
   const currentPost = useRemotePost(post ? parseInt(post, 10) : 0);
 
   React.useEffect(() => {
     if (post && parseInt(post, 10)) {
       dispatch({ type: "OPEN_MODAL" });
-    } else {
+    } else if (state.toggleModal) {
       dispatch({ type: "CLOSE_MODAL" });
     }
-  }, [post, dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [post, state.toggleModal]);
+
   return React.useMemo(
     () => (
       <Suspense fallback={<div />}>
@@ -93,14 +95,12 @@ function App() {
 
   const routes = React.useMemo(
     () =>
-      ["/", "/f/:forum", "/p/:post", "/f/:forum/p/:post"].map(
-        (routePath, index) => (
-          <Route exact path={routePath}>
-            <Post />
-            <Forum />
-          </Route>
-        )
-      ),
+      ["/", "/f/:forum", "/p/:post", "/f/:forum/p/:post"].map((routePath) => (
+        <Route exact path={routePath}>
+          <Post />
+          <Forum />
+        </Route>
+      )),
     []
   );
 
