@@ -15,6 +15,8 @@ export const ModalBackground = (displayState: boolean) =>
     visibility: displayState ? "visible" : "hidden",
     height: "100vh",
     width: "100vw",
+    maxHeight: "100%",
+    maxWidth: "100%",
     position: "absolute",
     top: 0,
     right: 0,
@@ -142,6 +144,8 @@ export const ModalWrapper = css({
   display: "flex",
   height: "100vh",
   width: "100vw",
+  maxWidth: "100%",
+  maxHeight: "100%",
   alignItems: "center",
   justifyContent: "center",
 });

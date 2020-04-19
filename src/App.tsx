@@ -24,6 +24,8 @@ const GlobalWrapper = styled.div`
   background-color: var(--global-background-color);
   width: 100vw;
   height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
 `;
 
 function Post() {
@@ -43,7 +45,7 @@ function Post() {
   return React.useMemo(
     () => (
       <Suspense fallback={<div />}>
-        <Modal data={currentPost || undefined} />
+        <Modal data={currentPost} />
       </Suspense>
     ),
     [currentPost]

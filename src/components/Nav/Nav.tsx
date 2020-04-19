@@ -22,7 +22,7 @@ export default function ({ toggleNav, toggleDark }: any) {
             onClick={() => history.push("/")}
           />
         </div>
-        <div style={{ height: "100%", alignItems: "center" }}>
+        <div style={{ height: "100%" }}>
           <img src={svgDark} alt="Toggle Dark mode" onClick={toggleDark} />
         </div>
       </div>

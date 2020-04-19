@@ -13,16 +13,14 @@ if (process.env.NODE_ENV === "development") {
     trackAllPureComponents: true,
   });
 }
-
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <UIContextProvider>
       <Router>
         <App />
       </Router>
     </UIContextProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
 
 serviceWorker.register();

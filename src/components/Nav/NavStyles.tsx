@@ -3,8 +3,8 @@ import { css } from "@emotion/core";
 export const NavWrapper = (changeColor: boolean) =>
   css({
     backgroundColor: changeColor ? "transparent" : "var(--nav-background)",
-    width: "100%",
-    maxWidth: "100vw",
+    width: "100vw",
+    maxWidth: "100%",
     height: "64px",
     top: 0,
     position: "fixed",
