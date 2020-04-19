@@ -31,6 +31,6 @@ export const NavWrapper = (changeColor: boolean) =>
 export const NavInnerWrapper = css({
   display: "flex",
   width: "100%",
-  maxWidth: "1100px",
+  maxWidth: "1000px",
   justifyContent: "space-between",
 });

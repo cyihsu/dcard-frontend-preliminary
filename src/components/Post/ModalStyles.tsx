@@ -103,7 +103,6 @@ export const ModalUserIdentity = styled.div`
 
 export const ModalContentWrap = styled.div`
   overflow: auto;
-  min-height: calc(80vh - 122px);
 `;
 
 export const ModalTitle = styled.div``;

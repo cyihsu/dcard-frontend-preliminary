@@ -16,6 +16,7 @@ export default function ({ toggleNav, toggleDark }: any) {
         <div style={{ height: "100%" }}>
           <img
             src={DcardLogo}
+            style={{ height: "64px" }}
             alt="Dcard"
             data-for={`tooltip-home`}
             data-tip={`回首頁`}
@@ -23,7 +24,12 @@ export default function ({ toggleNav, toggleDark }: any) {
           />
         </div>
         <div style={{ height: "100%" }}>
-          <img src={svgDark} alt="Toggle Dark mode" onClick={toggleDark} />
+          <img
+            src={svgDark}
+            style={{ height: "64px" }}
+            alt="Toggle Dark mode"
+            onClick={toggleDark}
+          />
         </div>
       </div>
     </nav>

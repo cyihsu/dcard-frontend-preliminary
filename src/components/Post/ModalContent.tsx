@@ -51,12 +51,12 @@ const ModalContent: React.FC<{ content: Post; handleClick: any }> = ({
               )}
             </ModalUserIdentity>
           </ModalHeaderItem>
-          <ModalEntity style={{ height: "20px", width: "20px" }}>
+          <ModalEntity>
             <img
               src={close}
               alt="close modal"
               onClick={handleClick}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", height: "20px", width: "20px" }}
             />
           </ModalEntity>
         </ModalHeader>

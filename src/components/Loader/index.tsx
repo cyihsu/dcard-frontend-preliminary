@@ -5,7 +5,6 @@ const Loader = ({ height }: any) => (
   <ContentLoader
     speed={2}
     height={height}
-    viewBox="0 0 400 100"
     backgroundColor="var(--loader-background)"
     foregroundColor="var(--dcard-corp-color)"
   >
