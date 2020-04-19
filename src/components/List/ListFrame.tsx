@@ -49,7 +49,7 @@ function ListFrame({
                 ref={ref}
                 onItemsRendered={onItemsRendered}
                 onScroll={({ scrollOffset }: any) =>
-                  scrollOffset < 10 && handleScroll(scrollOffset)
+                  scrollOffset < 100 && handleScroll(scrollOffset)
                 }
               >
                 {virtualRow}

@@ -105,6 +105,11 @@ function App() {
       )),
     []
   );
+  React.useEffect(() => {
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? setDark(true)
+      : setDark(false);
+  }, []);
 
   return (
     <GlobalWrapper className={isDark ? "dark" : ""}>
