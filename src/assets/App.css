@@ -141,15 +141,6 @@ a {
   scrollbar-width: none;
 }
 
-body::-webkit-scrollbar {
-  width: 0.7em;
-  background: transparent;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: #c0392b;
-}
-
 *::-webkit-scrollbar {
   display: none;
 }
