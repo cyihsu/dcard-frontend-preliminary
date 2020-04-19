@@ -14,7 +14,7 @@ export const ListElementWrapperStyle = styled.div`
   padding-right: 10px;
   padding-left: 10px;
   @media (max-width: 800px) {
-    padding: 0px 3px;
+    padding: 0px 10px;
   }
 `;
 

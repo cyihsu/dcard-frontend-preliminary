@@ -12,13 +12,11 @@ interface UIActions {
 interface UIStates {
   listScrolled: boolean;
   toggleModal: boolean;
-  currentPost: number;
 }
 
 const initState: UIStates = {
   listScrolled: false,
   toggleModal: false,
-  currentPost: 0,
 };
 
 export const UIContext = React.createContext<{
@@ -44,17 +42,16 @@ export const UIContextProvider: React.FC = (Props) => {
 };
 
 const UIReducer: React.Reducer<UIStates, UIActions> = (state, action) => {
+  console.log(state, action);
   switch (action.type) {
     case "USER_NOT_AT_TOP":
       return scrolledAction(state, true);
     case "USER_AT_TOP":
       return scrolledAction(state, false);
     case "CLOSE_MODAL":
-      return modalAction(state, 0);
+      return modalAction(state, false);
     case "OPEN_MODAL":
-      return action.payload !== undefined
-        ? modalAction(state, parseInt(action.payload.value as string, 10))
-        : state;
+      return modalAction(state, true);
     default:
       return state;
   }

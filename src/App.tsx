@@ -27,16 +27,13 @@ const GlobalWrapper = styled.div`
 `;
 
 function Post() {
-  const { state, dispatch } = React.useContext(UIContext);
+  const { dispatch } = React.useContext(UIContext);
   const { post } = useParams();
-  const currentPost = useRemotePost(state.currentPost);
+  const currentPost = useRemotePost(post ? parseInt(post, 10) : 0);
 
   React.useEffect(() => {
     if (post && parseInt(post, 10)) {
-      dispatch({
-        type: "OPEN_MODAL",
-        payload: { attr: "post", value: parseInt(post, 10) },
-      });
+      dispatch({ type: "OPEN_MODAL" });
     } else {
       dispatch({ type: "CLOSE_MODAL" });
     }
@@ -58,7 +55,7 @@ function Forum() {
     forum || ""
   );
 
-  const handleScroll = ({ scrollOffset }: any) => {
+  const handleScroll = (scrollOffset: number) => {
     // Reduce Reducer Calls
     // prettier-ignore
     dispatch({
@@ -96,12 +93,14 @@ function App() {
 
   const routes = React.useMemo(
     () =>
-      ["/", "/f/:forum", "/p/:post", "/f/:forum/p/:post"].map((routePath) => (
-        <Route exact path={routePath}>
-          <Post />
-          <Forum />
-        </Route>
-      )),
+      ["/", "/f/:forum", "/p/:post", "/f/:forum/p/:post"].map(
+        (routePath, index) => (
+          <Route exact path={routePath}>
+            <Post />
+            <Forum />
+          </Route>
+        )
+      ),
     []
   );
 

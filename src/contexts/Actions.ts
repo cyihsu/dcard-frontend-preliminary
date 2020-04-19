@@ -5,10 +5,9 @@ export const scrolledAction = (state: any, hasScrolled: boolean) => {
   };
 };
 
-export const modalAction = (state: any, toggleID: number) => {
+export const modalAction = (state: any, toggleState: boolean) => {
   return {
     ...state,
-    toggleModal: toggleID !== 0,
-    currentPost: toggleID,
+    toggleModal: toggleState,
   };
 };
