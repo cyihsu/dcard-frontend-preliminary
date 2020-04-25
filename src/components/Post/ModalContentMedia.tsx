@@ -25,10 +25,11 @@ function ModalContentMedia({ queryKey, mediaMeta }: any) {
         return <div />;
     }
   };
+  const imgReg = /([a-z\-_0-9]*\.(jpg|jpeg|png|gif))/g;
 
   return parseKey !== -1 ? (
     dataType(mediaMeta[parseKey].type)
-  ) : queryKey.search(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/g) !== -1 ? (
+  ) : queryKey.search(imgReg) !== -1 ? (
     <ModalImage src={queryKey} alt={queryKey} />
   ) : (
     <a
