@@ -13,14 +13,29 @@ if (process.env.NODE_ENV === "development") {
     trackAllPureComponents: true,
   });
 }
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <UIContextProvider>
-      <Router>
-        <App />
-      </Router>
-    </UIContextProvider>
-  </React.StrictMode>
-);
+
+const AppRoot = document.getElementById("root") as HTMLElement;
+if (AppRoot.hasChildNodes()) {
+  ReactDOM.hydrate(
+    <React.StrictMode>
+      <UIContextProvider>
+        <Router>
+          <App />
+        </Router>
+      </UIContextProvider>
+    </React.StrictMode>,
+    AppRoot
+  );
+} else {
+  ReactDOM.createRoot(AppRoot).render(
+    <React.StrictMode>
+      <UIContextProvider>
+        <Router>
+          <App />
+        </Router>
+      </UIContextProvider>
+    </React.StrictMode>
+  );
+}
 
 serviceWorker.register();

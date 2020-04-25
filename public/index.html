@@ -13,6 +13,154 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <style>
+      :root {
+        --font-color: #000;
+        --global-outer-width: 1100px;
+        --global-background-color: #f3f3f3;
+        --dcard-corp-color: #006aa6;
+        --dcard-link-color: #3397cf;
+        --nav-background: #006aa6;
+        --pure-background: #fff;
+        --hover-background: #f5f8fa;
+        --loader-background: #fafafa;
+
+        --avatar-F: #cb3a6b;
+        --avatar-M: #006ea5;
+
+        --svg-white: invert(21%) sepia(68%) saturate(3161%) hue-rotate(185deg)
+          brightness(98%) contrast(102%);
+        --svg-colored: invert(100%) sepia(100%) saturate(1%) hue-rotate(352deg)
+          brightness(102%) contrast(102%);
+      }
+
+      :root .dark {
+        --font-color: #fff;
+        --global-outer-width: 1100px;
+        --global-background-color: #18191a;
+        --dcard-corp-color: #006aa6;
+        --dcard-link-color: #3397cf;
+        --nav-background: #242526;
+        --pure-background: #242526;
+        --hover-background: #3a3b3c;
+        --loader-background: #343536;
+
+        --avatar-f: #cb3a6b;
+        --avatar-m: #006ea5;
+
+        --svg-colored: invert(100%) sepia(100%) saturate(1%) hue-rotate(352deg)
+          brightness(102%) contrast(102%);
+        --svg-white: invert(100%) sepia(100%) saturate(1%) hue-rotate(352deg)
+          brightness(102%) contrast(102%);
+      }
+
+      html {
+        line-height: 1.15;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      main {
+        display: block;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      span {
+        color: var(--font-color);
+      }
+
+      h1 {
+        font-size: 2em;
+        margin: 0.67em 0;
+      }
+
+      hr {
+        box-sizing: content-box;
+        height: 0;
+        overflow: visible;
+      }
+
+      a {
+        background-color: transparent;
+      }
+
+      b,
+      strong {
+        font-weight: bolder;
+      }
+
+      img {
+        border-style: none;
+      }
+
+      * {
+        -webkit-overflow-scrolling: touch;
+        box-sizing: border-box;
+      }
+
+      body,
+      html {
+        height: 100%;
+      }
+
+      body {
+        font-family: Roboto, Helvetica Neue, Helvetica, Arial, PingFang TC,
+          黑體-繁, Heiti TC, 蘋果儷中黑, Apple LiGothic Medium, 微軟正黑體,
+          Microsoft JhengHei, sans-serif;
+        overflow: overlay;
+        margin: 0;
+        width: 100%;
+        font-size: 14px;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 0;
+        line-height: 1;
+      }
+
+      ol,
+      p,
+      ul {
+        margin: 0;
+      }
+
+      ol,
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      a {
+        color: var(--dcard-link-color);
+        text-decoration: none;
+      }
+
+      .tooltip {
+        z-index: 30;
+        font-size: 16px !important;
+        padding: 0.5rem !important;
+      }
+
+      * {
+        scrollbar-width: none;
+      }
+
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
     <title>Dcard Frontend Preliminary</title>
   </head>
   <body>

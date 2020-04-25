@@ -2,8 +2,6 @@ import React, { Suspense } from "react";
 import styled from "@emotion/styled";
 import { Route, Switch, useParams } from "react-router-dom";
 
-// Extracted from original chunks
-import "./assets/App.css";
 import MainFrame from "./components/Frame/MainFrame";
 
 import { UIContext } from "./contexts/UIContext";

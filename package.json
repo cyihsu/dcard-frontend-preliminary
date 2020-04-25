@@ -54,6 +54,7 @@
     "husky": "^4.2.5",
     "prettier": "^2.0.4",
     "pretty-quick": "^2.0.1",
+    "react-snap": "^1.23.0",
     "source-map-explorer": "^2.4.2"
   },
   "husky": {

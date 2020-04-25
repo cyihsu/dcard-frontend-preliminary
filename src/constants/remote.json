@@ -1,4 +1,4 @@
 {
-  "POPULAR_LIST": "https://www.dcard.tw/_apicors/posts?popular=true",
-  "POST_ENDPOINT": "https://www.dcard.tw/_apicors/posts/"
+  "POPULAR_LIST": "https://www.dcard.tw/_api/posts?popular=true",
+  "POST_ENDPOINT": "https://www.dcard.tw/_api/posts/"
 }
