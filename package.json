@@ -18,7 +18,7 @@
     "@types/react-window": "^1.8.1",
     "@types/react-window-infinite-loader": "^1.0.2",
     "@welldone-software/why-did-you-render": "^4.0.7",
-    "react": "^0.0.0-experimental-e5d06e34b",
+    "react": "^0.14.0",
     "react-content-loader": "^5.0.4",
     "react-dom": "^0.0.0-experimental-e5d06e34b",
     "react-router": "^5.1.2",
